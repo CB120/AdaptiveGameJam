@@ -17,7 +17,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver) //RESTART THE GAME
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            Debug.Log("deez nuts");
         }
     }
 }

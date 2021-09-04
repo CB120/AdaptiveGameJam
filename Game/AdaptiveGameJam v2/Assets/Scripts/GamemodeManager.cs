@@ -56,8 +56,17 @@ public class GamemodeManager : MonoBehaviour
         }
 
         //Update the UI
+        if(waveLength - timer <= 5)
+        {
+            timeDisplay.color = Color.red;
+        }
+        else
+        {
+            timeDisplay.color = Color.white;
+        }
+
         timeDisplay.text = "Time Remaining: " + Mathf.Round((waveLength - timer));
-        waveDisplay.text = "Current Wave: " + currentWave;
+        waveDisplay.text = "Current Wave: " + (currentWave + 1);
         if(currentGameMode == GameMode.Adapt)
         {
             modeDisplay.text = "Adapt!";
@@ -66,15 +75,5 @@ public class GamemodeManager : MonoBehaviour
         {
             modeDisplay.text = "Perspective Shift!";
         }
-    }
-
-    void Adapt()
-    {
-
-    }
-
-    void PerspectiveShift()
-    {
-
     }
 }
