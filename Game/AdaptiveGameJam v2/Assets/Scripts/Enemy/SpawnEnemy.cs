@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -10,15 +11,18 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject WallOutline;
     public GameObject AlternateCamPos;
     public PlayerManager PMScript;
+    public float camMoveSpeed = 0.1f;
 
     public bool alternateGameMode = false;
     [SerializeField]
     List<GameObject> CameraLocations;
+    SpawnGrid spawnGrid;
 
     public Camera MainCam;
 
     void Start()
     {
+        spawnGrid = FindObjectOfType<SpawnGrid>();
         PMScript = FindObjectOfType<PlayerManager>();
         if (!PMScript.gameOver)
             InvokeRepeating("DoWalls", 1.0f, 3.0f);
@@ -74,7 +78,9 @@ public class SpawnEnemy : MonoBehaviour
 
     void CamSwapper()
     {
-        MainCam.transform.position = CameraLocations[0].transform.position;
+       
+        Vector3 lerpCam = CameraLocations[0].transform.position;
+        MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, lerpCam, camMoveSpeed * Time.deltaTime);
         MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
     }
 

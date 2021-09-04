@@ -10,6 +10,7 @@ public class GamemodeManager : MonoBehaviour
     public GameMode currentGameMode = GameMode.Adapt;
     PlayerManager PMScript;
     SpawnEnemy SpawnEnemyScript;
+    SpawnGrid spawnGrid;
 
     //Variables used to control waves
     float timer = 0;
@@ -30,6 +31,7 @@ public class GamemodeManager : MonoBehaviour
         PMScript = FindObjectOfType<PlayerManager>();
         SpawnEnemyScript = FindObjectOfType<SpawnEnemy>();
         currentGameMode = GameMode.Adapt;
+        spawnGrid = FindObjectOfType<SpawnGrid>();
     }
 
     // Update is called once per frame
@@ -56,6 +58,11 @@ public class GamemodeManager : MonoBehaviour
                     {
                         SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
                     }
+
+                    for(int i = 0; i < spawnGrid.Buttons.Length; i++)
+                    {
+                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                    }
                 }
             }
             else
@@ -65,6 +72,11 @@ public class GamemodeManager : MonoBehaviour
                     for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
                     {
                         SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                    }
+
+                    for (int i = 0; i < spawnGrid.Buttons.Length; i++)
+                    {
+                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
                     }
                 }
                 currentGameMode = GameMode.Adapt;
