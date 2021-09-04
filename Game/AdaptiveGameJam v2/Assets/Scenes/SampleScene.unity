@@ -825,9 +825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: bddac3e34a78aa444bc8f182163a3cac, type: 3}
+  - {fileID: 21300000, guid: 1711d2b6afcdbf24eb742325dc9b60a4, type: 3}
+  - {fileID: 21300000, guid: 3aae9c25eff036546ac53d7221f14163, type: 3}
   lifeImage: {fileID: 1894447872}
 --- !u!1 &407795886
 GameObject:

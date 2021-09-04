@@ -46,7 +46,22 @@ public class PlayerManager : MonoBehaviour
         if (Health > 0)
         {
             Health = Health - 1;
-            uiManager.updateLives(Health);
+            
+            if (Health == 2)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[0];
+            }
+           
+            if (Health == 1)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[1];
+            }
+
+            if (Health == 0)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[2];
+            }
+
         }
         else if (Health == 0)
         {

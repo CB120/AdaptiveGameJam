@@ -38,8 +38,9 @@ public class PlayerCubes : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            
-            playerManager.gameOver = true;
+
+            //playerManager.gameOver = true;
+            playerManager.Damaged();
             //print("died");
         }
     }

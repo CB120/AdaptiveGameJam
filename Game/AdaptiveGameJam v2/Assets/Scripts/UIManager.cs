@@ -6,9 +6,9 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
 
-    [SerializeField] private Sprite [] lifeSprites;
+    [SerializeField] public Sprite [] lifeSprites;
 
-    [SerializeField] private Image lifeImage;
+    [SerializeField] public Image lifeImage;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +22,10 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void updateLives(int currentLives)
+    public void updateLives(int lives)
     {
-        lifeImage.sprite = lifeSprites[currentLives];
+        //lives = -1;
+        //lifeImage.sprite = lifeSprites[lives];
     }
 
     
