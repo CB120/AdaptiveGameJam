@@ -20,7 +20,8 @@ public class PlayerCubes : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Particles.Play();
-            playerManager.gameOver = true;
+            //playerManager.gameOver = true;
+            playerManager.Damaged();
             //print("died");
         }
     }

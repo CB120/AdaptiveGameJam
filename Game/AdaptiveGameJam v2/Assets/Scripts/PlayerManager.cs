@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 { 
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
+    float Health = 3;
     void Start()
     {
         
@@ -33,4 +34,19 @@ public class PlayerManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
     }
+
+
+    public void Damaged()
+    {
+        if (Health > 0)
+        {
+            Health = Health - 1;
+        }
+        else if (Health == 0)
+        {
+            gameOver = true;
+        }
+        Debug.Log("Health = " + Health);
+    }
+ 
 }
