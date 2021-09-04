@@ -10,11 +10,12 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         InitWalls();
+        
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             InitWalls();
             CreateConnector();
