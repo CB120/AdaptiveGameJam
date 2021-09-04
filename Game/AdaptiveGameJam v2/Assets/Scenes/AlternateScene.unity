@@ -6554,7 +6554,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a538a0515c63c1f47912b9020c7104ee, type: 2}
+  - {fileID: 2100000, guid: 726288d4df210ab43ba9b3bffd37ff23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6787,6 +6787,7 @@ GameObject:
   - component: {fileID: 1325295320}
   - component: {fileID: 1325295319}
   - component: {fileID: 1325295322}
+  - component: {fileID: 1325295323}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameController
@@ -6874,6 +6875,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameMode: 0
   waveLength: 30
+--- !u!114 &1325295323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325295317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf39fea630872a4fa1716f3013679e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSprites: []
+  lifeImage: {fileID: 0}
 --- !u!1 &1389781960
 GameObject:
   m_ObjectHideFlags: 0
