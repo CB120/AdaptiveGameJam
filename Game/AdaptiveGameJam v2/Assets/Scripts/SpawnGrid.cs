@@ -12,6 +12,7 @@ public class SpawnGrid : MonoBehaviour
     public Button[] Buttons = new Button[9];
     private GameObject GridParent;
     public Material gridMaterial;
+    public int playerCollisions = 0;
 
     private void Start()
     {
@@ -29,6 +30,12 @@ public class SpawnGrid : MonoBehaviour
         Color oldColor = mat.color;
         Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaValue);
         mat.SetColor("_Color", newColor);
+    }
+
+    public void checkPlayerCollisions(int playerHit)
+    {
+        playerCollisions += playerHit;
+        print(playerCollisions);
     }
 
     public void Spawn1()
