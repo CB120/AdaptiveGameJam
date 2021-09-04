@@ -7,6 +7,8 @@ public class PlayerManager : MonoBehaviour
 { 
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
+    public float slowdownFactor = 0.05f;
+    public float slowdownLength = 2f;
     void Start()
     {
         
