@@ -57,6 +57,7 @@ public class SpawnGrid : MonoBehaviour
     }
 
     //Methods used to spawn blocks
+    
     public void Spawn1()
     {
         int indexPosition = 0;

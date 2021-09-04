@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
-{ 
+{
+
+    UIManager uiManager;
+
+
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
-    float Health = 3;
+    int Health = 3;
     void Start()
     {
-        
+        GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
+        uiManager = gameManager.GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -41,6 +46,7 @@ public class PlayerManager : MonoBehaviour
         if (Health > 0)
         {
             Health = Health - 1;
+            uiManager.updateLives(Health);
         }
         else if (Health == 0)
         {
