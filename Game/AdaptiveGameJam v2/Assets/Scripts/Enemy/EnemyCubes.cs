@@ -6,12 +6,21 @@ public class EnemyCubes : MonoBehaviour
 {
     SpawnGrid spawnGrid;
     ScoreManager scoreManager;
-    bool hasHit = false;
+    PlayerManager playerManager;
+    bool hasHit = false, particlesPlayed = false;
+
+    public Material transparentMaterial;
+
+    private float duration = 300f;
+    float t;
+    ParticleSystem Particles;
     void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         spawnGrid = gameManager.GetComponent<SpawnGrid>();
         scoreManager = gameManager.GetComponent<ScoreManager>();
+        playerManager = gameManager.GetComponent<PlayerManager>();
+        Particles = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -19,13 +28,31 @@ public class EnemyCubes : MonoBehaviour
     {
         if (transform.position.z < 0 && hasHit == false && gameObject.tag == "Vacant")
         {
-            print("Missed"); 
+           // print("Missed"); 
             scoreManager.DecreaseScore(20);
-
 
             hasHit = true;// End of script chris put your health stuff before here
         }
         
+        if(playerManager.gameOver && !particlesPlayed)
+        {
+            Invoke("PlayEffect", 1.0f);
+            particlesPlayed = true;
+        }
+
+
+        if (transform.position.z < 0)
+        {
+           gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+        }
+       
+
+    }
+
+    void PlayEffect()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Particles.Play();
     }
 
     private void OnTriggerEnter(Collider other)

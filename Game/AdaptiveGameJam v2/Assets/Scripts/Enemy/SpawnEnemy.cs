@@ -7,19 +7,20 @@ public class SpawnEnemy : MonoBehaviour
     public List<GameObject> EnemyWall;
     public GameObject Wall;
     public GameObject ParentWall;
-
+    public GameObject WallOutline;
+    public PlayerManager PMScript;
 
     void Start()
     {
-        InvokeRepeating("DoWalls", 0.0f, 3.0f);
+        PMScript = FindObjectOfType<PlayerManager>();
+        if (!PMScript.gameOver)
+            InvokeRepeating("DoWalls", 0.0f, 3.0f);
     }
 
     private void Update()
     {
-        for (int i = 0; i < EnemyWall.Count; i++)
-        {
-            EnemyWall[i].GetComponent<EnemyConnector>().passedThroughTime += Time.deltaTime / 10;
-        }
+        if (PMScript.gameOver)
+            CancelInvoke("DoWalls");
     }
 
     void DoWalls()
@@ -32,8 +33,7 @@ public class SpawnEnemy : MonoBehaviour
     void InitWalls()
     {
         EnemyWall = new List<GameObject>();
-
-
+        
         for (int x = -1, y = 1, z = 1, i = 0; i < 9; i++)
         {
             if (x == -1 && i < 3)
@@ -70,6 +70,7 @@ public class SpawnEnemy : MonoBehaviour
                 x++;
             }
         }
+        Instantiate(WallOutline, new Vector3(0, 0, 41), Quaternion.identity);
     }
 
     void CreateConnector()
