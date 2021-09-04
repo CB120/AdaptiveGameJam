@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ScrollFloor
-  m_Shader: {fileID: -6465566751694194690, guid: bc3187469df8c104d95497eea1f93df0, type: 3}
+  m_Name: Portal
+  m_Shader: {fileID: -6465566751694194690, guid: b73fab286b9d033499920c9f805f2ec0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_37E9A85A:
-        m_Texture: {fileID: 2800000, guid: 0b2bf3a2d5919b04aae82b72059ad4f6, type: 3}
+    - Texture2D_3A4DF169:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - Vector1_136CF95E: 2
+    - Vector1_5CB3F203: 0.5
+    - Vector1_7CB6968A: 3
+    - Vector1_C274F0CA: 25
     m_Colors:
-    - Vector2_36CAADF8: {r: 0, g: 0.5, b: 0, a: 0}
-    - Vector2_CF07A5D8: {r: 1, g: 5, b: 0, a: 0}
+    - Color_41AB7B99: {r: 3.531684, g: 0, b: 13.76636, a: 1}
   m_BuildTextureStacks: []
