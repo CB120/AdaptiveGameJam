@@ -19,7 +19,7 @@ public class EnemyCubes : MonoBehaviour
     {
         if (transform.position.z < 0 && hasHit == false && gameObject.tag == "Vacant")
         {
-            print("Missed"); 
+           // print("Missed"); 
             scoreManager.DecreaseScore(20);
 
 
@@ -36,4 +36,5 @@ public class EnemyCubes : MonoBehaviour
             scoreManager.IncreaseScore(10);
         }
     }
+
 }
