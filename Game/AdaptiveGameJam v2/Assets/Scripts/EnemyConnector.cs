@@ -12,11 +12,12 @@ public class EnemyConnector : MonoBehaviour
     public float passedThroughTime;
 
     private void Update()
-    {
-        moveSpeed += passedThroughTime / 100.0f;  // divide by point count or something
+    { 
+        //moveSpeed += passedThroughTime / 100.0f;  // divide by point count or something
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.z - (moveSpeed * Time.deltaTime)));
 
         if (transform.position.z <= -10)
             Destroy(this.gameObject);
     }
+
 }

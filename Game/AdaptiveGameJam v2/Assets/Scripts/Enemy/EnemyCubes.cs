@@ -7,16 +7,18 @@ public class EnemyCubes : MonoBehaviour
     SpawnGrid spawnGrid;
     ScoreManager scoreManager;
     PlayerManager playerManager;
-    bool hasHit = false;
+    bool hasHit = false, particlesPlayed = false;
 
     private float duration = 300f;
     float t;
+    ParticleSystem Particles;
     void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         spawnGrid = gameManager.GetComponent<SpawnGrid>();
         scoreManager = gameManager.GetComponent<ScoreManager>();
         playerManager = gameManager.GetComponent<PlayerManager>();
+        Particles = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -27,10 +29,14 @@ public class EnemyCubes : MonoBehaviour
            // print("Missed"); 
             scoreManager.DecreaseScore(20);
 
-
             hasHit = true;// End of script chris put your health stuff before here
         }
-
+        
+        if(playerManager.gameOver && !particlesPlayed)
+        {
+            Invoke("PlayEffect", 1.0f);
+            particlesPlayed = true;
+        }
 
 
         /*t += Time.deltaTime * duration; //SCALE EFFECT NOT CURRENTLY IN USE
@@ -43,6 +49,12 @@ public class EnemyCubes : MonoBehaviour
 
     }
 
+    void PlayEffect()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Particles.Play();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -51,7 +63,4 @@ public class EnemyCubes : MonoBehaviour
             scoreManager.IncreaseScore(10);
         }
     }
-
-    
-
 }

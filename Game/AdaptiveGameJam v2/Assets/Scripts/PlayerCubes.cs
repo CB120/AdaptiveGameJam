@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerCubes : MonoBehaviour
 {
     PlayerManager playerManager;
+    ParticleSystem Particles;
     // Start is called before the first frame update
     void Start()
     {
+        Particles = GetComponentInChildren<ParticleSystem>();
         GameObject manager = GameObject.FindGameObjectWithTag("GameController");
         playerManager = manager.GetComponent<PlayerManager>();
     }
@@ -17,6 +19,7 @@ public class PlayerCubes : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Particles.Play();
             playerManager.gameOver = true;
             //print("died");
         }
