@@ -8,6 +8,9 @@ public class PlayerManager : MonoBehaviour
 
     UIManager uiManager;
 
+    public AudioSource deathSound;
+    public AudioClip BoxHit;
+
 
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
@@ -16,6 +19,12 @@ public class PlayerManager : MonoBehaviour
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         uiManager = gameManager.GetComponent<UIManager>();
+    }
+
+    void playClip()
+    {
+        deathSound.clip = BoxHit;
+        deathSound.Play();
     }
 
     // Update is called once per frame
@@ -46,7 +55,7 @@ public class PlayerManager : MonoBehaviour
         if (Health > 0)
         {
             Health = Health - 1;
-            
+            playClip();   
             if (Health == 2)
             {
                 uiManager.lifeImage.sprite = uiManager.lifeSprites[0];
