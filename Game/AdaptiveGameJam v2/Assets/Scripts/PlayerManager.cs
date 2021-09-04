@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     public AudioSource deathSound;
     public AudioClip BoxHit;
-
+    public AudioClip GameOver;
 
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
@@ -21,9 +21,15 @@ public class PlayerManager : MonoBehaviour
         uiManager = gameManager.GetComponent<UIManager>();
     }
 
-    void playClip()
+    void SboxHit()
     {
         deathSound.clip = BoxHit;
+        deathSound.Play();
+    }
+
+    void SgameOver()
+    {
+        deathSound.clip = GameOver;
         deathSound.Play();
     }
 
@@ -32,11 +38,13 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver) //RESTART THE GAME
         {
+            
             if (!resetTime)
             {
                 //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
                 Time.timeScale = 0.2f;
                 Invoke("ResetTime", 0.5f);
+                Invoke("SgameOver", 0.75f);
                 resetTime = true;
             }
             
@@ -55,7 +63,7 @@ public class PlayerManager : MonoBehaviour
         if (Health > 0)
         {
             Health = Health - 1;
-            playClip();   
+            SboxHit();   
             if (Health == 2)
             {
                 uiManager.lifeImage.sprite = uiManager.lifeSprites[0];

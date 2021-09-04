@@ -2941,6 +2941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a349c89317d01a248a02a0b8df6438f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audiosource: {fileID: 1263224043}
+  PassCube: {fileID: 8300000, guid: 7d32c5480f0f51b40913356a8b29b172, type: 3}
   scoreText: {fileID: 376565124}
 --- !u!114 &1263224041
 MonoBehaviour:
@@ -2956,6 +2958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSound: {fileID: 1263224043}
   BoxHit: {fileID: 8300000, guid: 037c301234eff684381c40696ec6ae7c, type: 3}
+  GameOver: {fileID: 8300000, guid: 8b1ca8d886682654a92b72274d4c8812, type: 3}
   gameOver: 0
 --- !u!4 &1263224042
 Transform:

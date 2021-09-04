@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public AudioSource audiosource;
+    public AudioClip PassCube;
     public Text scoreText;
     int currentScore = 0;
     int previousHighScore;
@@ -18,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += scoreIncrease;
         scoreText.text = currentScore.ToString();
+        playClip();
     }
 
     public void DecreaseScore(int scoreDecrease)
@@ -41,5 +44,11 @@ public class ScoreManager : MonoBehaviour
             scoreText.color = new Color(255, 0f, 0f);
             PlayerPrefs.SetInt("High_Score", currentScore);
         }
+    }
+
+    void playClip()
+    {
+        audiosource.clip = PassCube;
+        audiosource.Play();
     }
 }
