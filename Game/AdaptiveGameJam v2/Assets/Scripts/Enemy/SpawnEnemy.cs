@@ -8,7 +8,14 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject Wall;
     public GameObject ParentWall;
     public GameObject WallOutline;
+    public GameObject AlternateCamPos;
     public PlayerManager PMScript;
+
+    public bool alternateGameMode = false;
+    [SerializeField]
+    List<GameObject> CameraLocations;
+
+    public Camera MainCam;
 
     void Start()
     {
@@ -17,10 +24,34 @@ public class SpawnEnemy : MonoBehaviour
             InvokeRepeating("DoWalls", 0.0f, 3.0f);
     }
 
+    bool phaseChange = false;
+
     private void Update()
     {
         if (PMScript.gameOver)
             CancelInvoke("DoWalls");
+        if (alternateGameMode)
+        {
+            CancelInvoke("DoWalls");
+            InvokeRepeating("CamSwapper", 0.0f, 5.0f);
+            if (!phaseChange)
+            {
+                phaseChange = true;
+                Phase2Walls();
+            }
+        }
+        else if(!alternateGameMode)
+        {
+            if (phaseChange)
+            {
+                CancelInvoke("CamSwapper");
+                CancelInvoke("InitWalls");
+                InvokeRepeating("DoWalls", 0.0f, 3.0f);
+                MainCam.transform.position = new Vector3(0, 3, -10);
+                MainCam.transform.rotation = Quaternion.Euler(0, 0, 0);
+                phaseChange = false;
+            }
+        }
     }
 
     void DoWalls()
@@ -30,10 +61,22 @@ public class SpawnEnemy : MonoBehaviour
         CreateRandomWall();
     }
 
+    void Phase2Walls()
+    {
+        InvokeRepeating("InitWalls", 0.0f, 4.0f);
+    }
+
+    void CamSwapper()
+    {
+        MainCam.transform.position = CameraLocations[0].transform.position;
+        MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
+    }
+
     void InitWalls()
     {
         EnemyWall = new List<GameObject>();
-        
+        CameraLocations = new List<GameObject>();
+
         for (int x = -1, y = 1, z = 1, i = 0; i < 9; i++)
         {
             if (x == -1 && i < 3)
@@ -71,6 +114,8 @@ public class SpawnEnemy : MonoBehaviour
             }
         }
         Instantiate(WallOutline, new Vector3(0, 0, 41), Quaternion.identity);
+        GameObject CamPos = Instantiate(AlternateCamPos, new Vector3(0, 10, 50), Quaternion.identity);
+        CameraLocations.Add(CamPos);
     }
 
     void CreateConnector()
