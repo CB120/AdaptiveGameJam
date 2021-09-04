@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
         {
             if (!resetTime)
             {
-                //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
                 Time.timeScale = 0.2f;
                 Invoke("ResetTime", 0.5f);
                 Invoke("GameOverScreen", 5.0f);

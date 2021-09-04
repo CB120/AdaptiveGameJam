@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32824020116a7ec46ac7bc6eff6a6953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1720169986780173026, guid: d5a4db6b59d5c2541b36948b77720166, type: 3}
+  cube: {fileID: 1397009916755968561, guid: d5a4db6b59d5c2541b36948b77720166, type: 3}
   Buttons:
   - {fileID: 166503038}
   - {fileID: 1827759958}
@@ -1498,6 +1498,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 3563779255723118100, guid: 204d53e75aa31dc4795b12fc2ded70b8, type: 3}
+      propertyPath: Wall
+      value: 
+      objectReference: {fileID: 7236559263169262231, guid: a28f7e2c96769d34f85144b7b403f040, type: 3}
     - target: {fileID: 3563779255723118100, guid: 204d53e75aa31dc4795b12fc2ded70b8, type: 3}
       propertyPath: ParentWall
       value: 

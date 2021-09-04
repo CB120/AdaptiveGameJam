@@ -8,11 +8,12 @@ public class GameOver : MonoBehaviour
 {
     public void PlayAgain()
     {
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 
     public void MainMenu()
     {
-        Debug.Log("Go to main menu");
+        SceneManager.LoadScene("Main Menu");
     }
 }
