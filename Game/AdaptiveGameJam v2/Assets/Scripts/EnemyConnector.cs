@@ -10,13 +10,14 @@ public class EnemyConnector : MonoBehaviour
     private float moveSpeed = 10;
 
     public float passedThroughTime;
+    public bool getFucked = false;
 
     private void Update()
     { 
         //moveSpeed += passedThroughTime / 100.0f;  // divide by point count or something
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.z - (moveSpeed * Time.deltaTime)));
 
-        if (transform.position.z <= -10)
+        if (transform.position.z <= -10 || getFucked)
             Destroy(this.gameObject);
     }
 

@@ -12000,6 +12000,7 @@ MonoBehaviour:
   - {fileID: 1238767108}
   gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
   playerCollisions: 0
+  EnemySpawnerScript: {fileID: 0}
   gamemodeManager: {fileID: 0}
 --- !u!114 &1271446640
 MonoBehaviour:
@@ -12031,7 +12032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGameMode: 0
-  waveLength: 30
+  waveLength: 15
 --- !u!114 &1271446642
 MonoBehaviour:
   m_ObjectHideFlags: 0

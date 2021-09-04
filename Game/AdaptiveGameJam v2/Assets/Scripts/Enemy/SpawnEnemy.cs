@@ -21,7 +21,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         PMScript = FindObjectOfType<PlayerManager>();
         if (!PMScript.gameOver)
-            InvokeRepeating("DoWalls", 0.0f, 3.0f);
+            InvokeRepeating("DoWalls", 1.0f, 3.0f);
     }
 
     bool phaseChange = false;
@@ -29,24 +29,30 @@ public class SpawnEnemy : MonoBehaviour
     private void Update()
     {
         if (PMScript.gameOver)
-            CancelInvoke("DoWalls");
-        if (alternateGameMode)
         {
             CancelInvoke("DoWalls");
-            InvokeRepeating("CamSwapper", 0.0f, 5.0f);
+            CancelInvoke("CamSwapper");
+            CancelInvoke("InitWalls");
+            MainCam.transform.position = new Vector3(0, 3, -10);
+            MainCam.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (alternateGameMode && !PMScript.gameOver)
+        {
+            CancelInvoke("DoWalls");
+            InvokeRepeating("CamSwapper", 0.0f, 6.0f);
             if (!phaseChange)
             {
                 phaseChange = true;
                 Phase2Walls();
             }
         }
-        else if(!alternateGameMode)
+        else if(!alternateGameMode && !PMScript.gameOver)
         {
             if (phaseChange)
             {
                 CancelInvoke("CamSwapper");
                 CancelInvoke("InitWalls");
-                InvokeRepeating("DoWalls", 0.0f, 3.0f);
+                InvokeRepeating("DoWalls", 1.0f, 3.0f);
                 MainCam.transform.position = new Vector3(0, 3, -10);
                 MainCam.transform.rotation = Quaternion.Euler(0, 0, 0);
                 phaseChange = false;
@@ -63,7 +69,7 @@ public class SpawnEnemy : MonoBehaviour
 
     void Phase2Walls()
     {
-        InvokeRepeating("InitWalls", 0.0f, 4.0f);
+        InvokeRepeating("InitWalls", 1.0f, 4.5f);
     }
 
     void CamSwapper()

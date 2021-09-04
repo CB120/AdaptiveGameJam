@@ -8,10 +8,12 @@ public class GamemodeManager : MonoBehaviour
     //Enumerator used to control the current game mode
     public enum GameMode {Adapt,  PerspectiveShift};
     public GameMode currentGameMode = GameMode.Adapt;
+    PlayerManager PMScript;
+    SpawnEnemy SpawnEnemyScript;
 
     //Variables used to control waves
     float timer = 0;
-    [SerializeField] private float waveLength = 30;
+    [SerializeField] private float waveLength = 15;
     private int currentWave = 0;
 
     //References to UI
@@ -25,6 +27,8 @@ public class GamemodeManager : MonoBehaviour
     void Start()
     {
         //Default game mode is Adapt
+        PMScript = FindObjectOfType<PlayerManager>();
+        SpawnEnemyScript = FindObjectOfType<SpawnEnemy>();
         currentGameMode = GameMode.Adapt;
     }
 
@@ -35,24 +39,40 @@ public class GamemodeManager : MonoBehaviour
         if(timer < waveLength)
         {
             timer += Time.deltaTime;
+            Debug.Log(timer);
         }
         //If we reach the end of a wave
         else if(timer >= waveLength)
         {
-            //Update our wave variables
-            timer = 0;
-            currentWave++;
-
             //Determine gamemode based on current wave
-            if(currentWave % 2 == 0)
+            if (currentWave % 2 == 0)
             {
                 currentGameMode = GameMode.PerspectiveShift;
+                
+                SpawnEnemyScript.alternateGameMode = true;
+                if (!PMScript.gameOver)
+                {
+                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                    {
+                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                    }
+                }
             }
             else
             {
+                if (!PMScript.gameOver)
+                {
+                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                    {
+                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                    }
+                }
                 currentGameMode = GameMode.Adapt;
+                SpawnEnemyScript.alternateGameMode = false;
             }
-            
+            //Update our wave variables
+            timer = 0;
+            currentWave++;        
         }
 
         //Update the UI

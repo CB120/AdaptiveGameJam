@@ -17,6 +17,9 @@ public class SpawnGrid : MonoBehaviour
     private Quaternion defaultRotation;
     private Vector3 defaultScale;
 
+    [SerializeField]
+    private SpawnEnemy EnemySpawnerScript;
+
     //Reference to the GamemodeManager
     [SerializeField] private GamemodeManager gamemodeManager;
     private bool resetTransform = false;
@@ -31,6 +34,7 @@ public class SpawnGrid : MonoBehaviour
     {
         Cubes = new GameObject[9];
         GridParent = GameObject.FindGameObjectWithTag("GridParent");
+        EnemySpawnerScript = FindObjectOfType<SpawnEnemy>();
 
         //create default transform values
         defaultPosition = GridParent.transform.position;
@@ -68,15 +72,29 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
             }
-            else
+            else 
             {
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                 Destroy(Cubes[indexPosition]);
             }
         }
-        else
+        else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[8].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
         }
     }
 
@@ -99,9 +117,23 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[5].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
         }
     }
 
@@ -124,9 +156,23 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[2].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
         }
     }
 
@@ -136,7 +182,7 @@ public class SpawnGrid : MonoBehaviour
         //If we are currently in the Adapt gamemode
         if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
         {
-            
+
             if (!Cubes[indexPosition])
             {
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 2, 0), Quaternion.identity);
@@ -149,9 +195,23 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[7].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
         }
     }
 
@@ -161,7 +221,7 @@ public class SpawnGrid : MonoBehaviour
         //If we are currently in the Adapt gamemode
         if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
         {
-            
+
             if (!Cubes[4])
             {
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(0, 2, 0), Quaternion.identity);
@@ -174,9 +234,24 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[4].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+                }
+            }
         }
     }
 
@@ -199,9 +274,24 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[1].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+                }
+            }
         }
     }
 
@@ -224,9 +314,24 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[6].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+                }
+            }
         }
     }
 
@@ -249,9 +354,23 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[3].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                }
+            }
         }
     }
 
@@ -274,9 +393,24 @@ public class SpawnGrid : MonoBehaviour
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
             }
         }
-        else
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+            if (EnemySpawnerScript.EnemyWall[0].gameObject)
+            {
+                if (EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled)
+                {
+                    EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                }
+                else
+                {
+                    Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                    EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+
+                }
+            }
         }
     }
 
