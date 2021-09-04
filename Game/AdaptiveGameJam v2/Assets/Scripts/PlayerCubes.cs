@@ -6,6 +6,8 @@ public class PlayerCubes : MonoBehaviour
 {
     PlayerManager playerManager;
     public Material gridMaterial, transparentMaterial;
+    public AudioSource audiosource;
+    public AudioClip gridClick;
 
     // Start is called before the first frame update
     
@@ -22,10 +24,12 @@ public class PlayerCubes : MonoBehaviour
         if (Input.GetButtonDown("Transparent"))
         {
             gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+            
         }
         if (Input.GetButtonUp("Transparent"))
         {
             gameObject.GetComponent<MeshRenderer>().material = gridMaterial;
+            playClip();
         }
         if (playerManager.gameOver)
         {
@@ -43,5 +47,11 @@ public class PlayerCubes : MonoBehaviour
             playerManager.Damaged();
             //print("died");
         }
+    }
+
+    void playClip()
+    {
+        audiosource.clip = gridClick;
+        audiosource.Play();
     }
 }
