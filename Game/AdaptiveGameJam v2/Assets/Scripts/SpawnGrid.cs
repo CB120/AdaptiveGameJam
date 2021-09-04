@@ -25,18 +25,6 @@ public class SpawnGrid : MonoBehaviour
        
     }
 
-    void ChangeAlpha(Material mat, float alphaValue)
-    {
-        Color oldColor = mat.color;
-        Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, alphaValue);
-        mat.SetColor("_Color", newColor);
-    }
-
-    public void checkPlayerCollisions(int playerHit)
-    {
-        playerCollisions += playerHit;
-        print(playerCollisions);
-    }
 
     public void Spawn1()
     {
