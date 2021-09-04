@@ -11,7 +11,8 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject WallOutline;
     public GameObject AlternateCamPos;
     public PlayerManager PMScript;
-    public float camMoveSpeed = 0.1f;
+
+    private float camMoveSpeed = 5.0f;
 
     public bool alternateGameMode = false;
     [SerializeField]
@@ -43,7 +44,7 @@ public class SpawnEnemy : MonoBehaviour
         if (alternateGameMode && !PMScript.gameOver)
         {
             CancelInvoke("DoWalls");
-            InvokeRepeating("CamSwapper", 0.0f, 6.0f);
+            InvokeRepeating("CamSwapper", 0, 6.0f);
             if (!phaseChange)
             {
                 phaseChange = true;
