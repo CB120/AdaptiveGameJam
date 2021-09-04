@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 2883065210288301964}
   - component: {fileID: 3517530584324546574}
   - component: {fileID: 1716673541900814069}
-  - component: {fileID: 6005774251552526684}
-  - component: {fileID: -214452787605171588}
+  - component: {fileID: 1601064513318899649}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -97,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.75, z: 0.75}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6005774251552526684
+--- !u!114 &1601064513318899649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,19 +105,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2319017626313334459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aec00b40e540a244cb9b98535d59347a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1f35fb8b493bd84d99c1e1c4a75cb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ConnectedCubes: []
---- !u!114 &-214452787605171588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319017626313334459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f68e29fafd9ec4e83b34362e981afb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  AmtToPass: 0
+  moveSpeed: 10
+  passedThroughTime: 0
