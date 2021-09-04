@@ -9,6 +9,8 @@ public class EnemyCubes : MonoBehaviour
     PlayerManager playerManager;
     bool hasHit = false;
 
+    public Material transparentMaterial;
+
     private float duration = 300f;
     float t;
     void Start()
@@ -33,12 +35,10 @@ public class EnemyCubes : MonoBehaviour
 
 
 
-        /*t += Time.deltaTime * duration; //SCALE EFFECT NOT CURRENTLY IN USE
-        if (playerManager.gameOver == true)
+        if (transform.position.z < 0)
         {
-            Vector3 scale = Vector3.Lerp(new Vector3(1f, 1f, 1f), new Vector3(0f, 0f, 0f), t);
-            transform.localScale = scale;
-        }*/
+           gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+        }
        
 
     }
