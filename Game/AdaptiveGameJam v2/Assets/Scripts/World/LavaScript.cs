@@ -21,7 +21,7 @@ public class LavaScript : MonoBehaviour
     void SummonLava()
     {
         float random = Random.Range(0, 100);
-        print(random);
+        
         if(random > 50)
         {
             lavaBurst.Play();
