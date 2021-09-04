@@ -10,8 +10,8 @@ public class ScoreManager : MonoBehaviour
     int previousHighScore;
     void Start()
     {
-        currentScore = 0;
-        previousHighScore = PlayerPrefs.GetInt("High_Score");
+        // currentScore = 0;
+        previousHighScore = PlayerPrefs.GetInt("High_Score", 0);
     }
 
     public void IncreaseScore(int scoreIncrease)
