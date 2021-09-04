@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerCubes : MonoBehaviour
 {
+    PlayerManager playerManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject manager = GameObject.FindGameObjectWithTag("GameController");
+        playerManager = manager.GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -15,7 +17,8 @@ public class PlayerCubes : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            print("die");
+            playerManager.gameOver = true;
+            //print("died");
         }
     }
 }
