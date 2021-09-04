@@ -100,7 +100,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             //EnemyWall[RandomStartSpot].GetComponent<MeshRenderer>().enabled = false;
             GameObject nextWall = EnemyWall[RandomStartSpot].GetComponent<EnemyConnector>().ConnectedCubes[Random.Range(0, EnemyWall[RandomStartSpot].GetComponent<EnemyConnector>().ConnectedCubes.Count)];
-
+            nextWall.tag = "Vacant";
             nextWall.GetComponent<MeshRenderer>().enabled = false;
             nextWall.GetComponent<BoxCollider>().isTrigger = true;
             for (int x = 0; x < EnemyWall.Count; x++)
