@@ -17,15 +17,27 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentScore > previousHighScore)
-        {
-           // PlayerPrefs.SetInt("High_Score")
-        }
+        
     }
 
-    void IncreaseScore(int scoreIncrease)
+    public void IncreaseScore(int scoreIncrease)
     {
         currentScore += scoreIncrease;
         scoreText.text = currentScore.ToString();
+    }
+
+    public void DecreaseScore(int scoreIncrease)
+    {
+        currentScore -= scoreIncrease;
+        scoreText.text = currentScore.ToString();
+    }
+
+    public void GameEnd()
+    {
+        if (currentScore > previousHighScore)
+        {
+            scoreText.color = new Color(255, 0f, 0f);
+            PlayerPrefs.SetInt("High_Score", currentScore);
+        }
     }
 }
