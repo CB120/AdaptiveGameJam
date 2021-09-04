@@ -18,6 +18,7 @@ public class SpawnGrid : MonoBehaviour
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
     private Vector3 defaultScale;
+    public float rotateOffset = 2f;
 
     //Reference to the GamemodeManager
     [SerializeField] private GamemodeManager gamemodeManager;
@@ -53,7 +54,7 @@ public class SpawnGrid : MonoBehaviour
        {
             ResetPlayerRotation();
             //Debug.Log("we ain't rollin");
-       }
+        }
     }
 
     //Methods used to spawn blocks
@@ -286,26 +287,30 @@ public class SpawnGrid : MonoBehaviour
         //Flip resetTransform
         resetTransform = !resetTransform;
 
+        GridParent.transform.position = new Vector3(0f, rotateOffset, 0f);
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             Debug.Log("Roll Forward");
-            GridParent.transform.Rotate(new Vector3(GridParent.transform.rotation.x + 90f, 0f, 0f), Space.World);
+            //GridParent.transform.Rotate(new Vector3(GridParent.transform.rotation.x + 90f, GridParent.transform.rotation.y, GridParent.transform.rotation.z), Space.Self);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             Debug.Log("Roll Left");
-            GridParent.transform.Rotate(new Vector3(0f, 0f, GridParent.transform.rotation.z - 90f), Space.World);
+            GridParent.transform.Rotate(new Vector3(0, 0, Mathf.Round(GridParent.transform.rotation.z - 90.0f)), Space.Self);
+            
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("Roll Right");
-            GridParent.transform.Rotate(new Vector3(0f, 0f, GridParent.transform.rotation.z + 90f), Space.World);
+            Debug.Log("Roll Backward");
+            //GridParent.transform.Rotate(new Vector3(GridParent.transform.rotation.x, GridParent.transform.rotation.y, GridParent.transform.rotation.z + 90f), Space.Self);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Debug.Log("Roll Backward");
-            GridParent.transform.Rotate(new Vector3(GridParent.transform.rotation.x - 90f, 0f, 0f), Space.World);
+            Debug.Log("Roll Right");
+            GridParent.transform.Rotate(new Vector3(0, 0, Mathf.Round(GridParent.transform.rotation.z + 90.0f)), Space.Self);
         }
+        
     }
 
     public void ResetPlayerRotation()
