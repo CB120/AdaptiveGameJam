@@ -7,29 +7,30 @@ public class SpawnEnemy : MonoBehaviour
     public List<GameObject> EnemyWall;
     public GameObject Wall;
     public GameObject ParentWall;
+
+
     void Start()
     {
-        InitWalls();
-        
+        InvokeRepeating("DoWalls", 0.0f, 3.0f);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        for (int i = 0; i < EnemyWall.Count; i++)
         {
-            InitWalls();
-            CreateConnector();
-            CreateRandomWall();
+            EnemyWall[i].GetComponent<EnemyConnector>().passedThroughTime += Time.deltaTime / 10;
         }
+    }
+
+    void DoWalls()
+    {
+        InitWalls();
+        CreateConnector();
+        CreateRandomWall();
     }
 
     void InitWalls()
     {
-        if (EnemyWall.Count > 0)
-        {
-            for (int i = 0; i < EnemyWall.Count; i++)
-                Destroy(EnemyWall[i]);
-        }
         EnemyWall = new List<GameObject>();
 
 
@@ -37,7 +38,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             if (x == -1 && i < 3)
             {
-                Vector3 NewPos = new Vector3(x, y, z);
+                Vector3 NewPos = new Vector3(x, y, z + 40);
                 GameObject NewWall = Instantiate(Wall, NewPos, Quaternion.identity);
                 NewWall.transform.parent = ParentWall.transform;
                 NewWall.name = "Wall " + i;
@@ -46,7 +47,7 @@ public class SpawnEnemy : MonoBehaviour
             }
             else if (x == 0 && i >= 3 && i < 6)
             {
-                Vector3 NewPos = new Vector3(x, y, z);
+                Vector3 NewPos = new Vector3(x, y, z + 40);
                 GameObject NewWall = Instantiate(Wall, NewPos, Quaternion.identity);
                 NewWall.transform.parent = ParentWall.transform;
                 NewWall.name = "Wall " + i;
@@ -55,7 +56,7 @@ public class SpawnEnemy : MonoBehaviour
             }
             else if (x == 1 && i < 9)
             {
-                Vector3 NewPos = new Vector3(x, y, z);
+                Vector3 NewPos = new Vector3(x, y, z + 40);
                 GameObject NewWall = Instantiate(Wall, NewPos, Quaternion.identity);
                 NewWall.transform.parent = ParentWall.transform;
                 NewWall.name = "Wall " + i;
@@ -95,14 +96,17 @@ public class SpawnEnemy : MonoBehaviour
     void CreateRandomWall()
     {
         int RandomAmount = (int)Random.Range(1, EnemyWall.Count);
+        int AmountToPass = RandomAmount;
         int RandomStartSpot = (int)Random.Range(0, EnemyWall.Count);
         for (int i = 0; i < RandomAmount; i++)
         {
-            //EnemyWall[RandomStartSpot].GetComponent<MeshRenderer>().enabled = false;
             GameObject nextWall = EnemyWall[RandomStartSpot].GetComponent<EnemyConnector>().ConnectedCubes[Random.Range(0, EnemyWall[RandomStartSpot].GetComponent<EnemyConnector>().ConnectedCubes.Count)];
             nextWall.tag = "Vacant";
+            if (!nextWall.GetComponent<MeshRenderer>().enabled)
+                AmountToPass--;
             nextWall.GetComponent<MeshRenderer>().enabled = false;
             nextWall.GetComponent<BoxCollider>().isTrigger = true;
+            nextWall.GetComponent<EnemyConnector>().AmtToPass = AmountToPass;
             for (int x = 0; x < EnemyWall.Count; x++)
             {
                 if (EnemyWall[x] == nextWall)
