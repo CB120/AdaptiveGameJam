@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 { 
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
+    public GameObject GameOver;
     void Start()
     {
         
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
                 //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
                 Time.timeScale = 0.2f;
                 Invoke("ResetTime", 0.5f);
+                Invoke("GameOverScreen", 5.0f);
                 resetTime = true;
             }
             
@@ -32,5 +34,9 @@ public class PlayerManager : MonoBehaviour
     void ResetTime()
     {
         Time.timeScale = 1.0f;
+    }
+    void GameOverScreen()
+    {
+        GameOver.SetActive(true);
     }
 }
