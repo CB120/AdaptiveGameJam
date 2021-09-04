@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GridParent
   - Vacant
+  - Enemy
   layers:
   - Default
   - TransparentFX
