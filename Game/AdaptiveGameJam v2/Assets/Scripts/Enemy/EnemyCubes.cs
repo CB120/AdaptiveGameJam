@@ -7,16 +7,20 @@ public class EnemyCubes : MonoBehaviour
     SpawnGrid spawnGrid;
     ScoreManager scoreManager;
     PlayerManager playerManager;
-    bool hasHit = false;
+    bool hasHit = false, particlesPlayed = false;
+
+    public Material transparentMaterial;
 
     private float duration = 300f;
     float t;
+    ParticleSystem Particles;
     void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         spawnGrid = gameManager.GetComponent<SpawnGrid>();
         scoreManager = gameManager.GetComponent<ScoreManager>();
         playerManager = gameManager.GetComponent<PlayerManager>();
+        Particles = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -27,20 +31,28 @@ public class EnemyCubes : MonoBehaviour
            // print("Missed"); 
             scoreManager.DecreaseScore(20);
 
-
             hasHit = true;// End of script chris put your health stuff before here
+        }
+        
+        if(playerManager.gameOver && !particlesPlayed)
+        {
+            Invoke("PlayEffect", 1.0f);
+            particlesPlayed = true;
         }
 
 
-
-        /*t += Time.deltaTime * duration; //SCALE EFFECT NOT CURRENTLY IN USE
-        if (playerManager.gameOver == true)
+        if (transform.position.z < 0)
         {
-            Vector3 scale = Vector3.Lerp(new Vector3(1f, 1f, 1f), new Vector3(0f, 0f, 0f), t);
-            transform.localScale = scale;
-        }*/
+           gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+        }
        
 
+    }
+
+    void PlayEffect()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Particles.Play();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +63,4 @@ public class EnemyCubes : MonoBehaviour
             scoreManager.IncreaseScore(10);
         }
     }
-
-    
-
 }
