@@ -15,9 +15,9 @@ public class GamemodeManager : MonoBehaviour
     private int currentWave = 0;
 
     //References to UI
-    public Text timeDisplay;
-    public Text waveDisplay;
-    public Text modeDisplay;
+    //public Text timeDisplay;
+    //public Text waveDisplay;
+    //public Text modeDisplay;
 
 
 
@@ -56,7 +56,7 @@ public class GamemodeManager : MonoBehaviour
         }
 
         //Update the UI
-        if(waveLength - timer <= 5)
+/*        if (waveLength - timer <= 5)
         {
             timeDisplay.color = Color.red;
         }
@@ -67,13 +67,13 @@ public class GamemodeManager : MonoBehaviour
 
         timeDisplay.text = "Time Remaining: " + Mathf.Round((waveLength - timer));
         waveDisplay.text = "Current Wave: " + (currentWave + 1);
-        if(currentGameMode == GameMode.Adapt)
+        if (currentGameMode == GameMode.Adapt)
         {
             modeDisplay.text = "Adapt!";
         }
-        else if(currentGameMode == GameMode.PerspectiveShift)
+        else if (currentGameMode == GameMode.PerspectiveShift)
         {
             modeDisplay.text = "Perspective Shift!";
-        }
+        }*/
     }
 }
