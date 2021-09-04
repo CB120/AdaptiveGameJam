@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LavaMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 5fee69c8671e7fe458ae5cac57f68500, type: 3}
+  m_Name: PlayerMat
+  m_Shader: {fileID: -6465566751694194690, guid: fb5675afa4a4b874c984095df8c72350, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,14 +20,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 66734c81f385b6446869c8a39265540e, type: 3}
+        m_Texture: {fileID: 2800000, guid: b98a5a72b20e9eb40bf393808f10640d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 66734c81f385b6446869c8a39265540e, type: 3}
+        m_Texture: {fileID: 2800000, guid: b98a5a72b20e9eb40bf393808f10640d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_3E773BDD: {r: 0.015686275, g: 0.007843138, b: 0, a: 0}
+    - Color_B5C1D1: {r: 0, g: 0.4680053, b: 1.943396, a: 0}
   m_BuildTextureStacks: []
