@@ -12,10 +12,12 @@ public class PlayerManager : MonoBehaviour
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
     int Health = 3;
+    ScoreManager scoreManager;
     void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         uiManager = gameManager.GetComponent<UIManager>();
+        scoreManager = gameManager.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -23,8 +25,10 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver) //RESTART THE GAME
         {
+            scoreManager.GameEnd();
             if (!resetTime)
             {
+
                 //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
                 Time.timeScale = 0.2f;
                 Invoke("ResetTime", 0.5f);
