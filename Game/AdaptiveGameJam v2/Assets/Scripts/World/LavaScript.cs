@@ -22,7 +22,7 @@ public class LavaScript : MonoBehaviour
     {
         float random = Random.Range(0, 100);
         print(random);
-        if(random > 75)
+        if(random > 50)
         {
             lavaBurst.Play();
         }
