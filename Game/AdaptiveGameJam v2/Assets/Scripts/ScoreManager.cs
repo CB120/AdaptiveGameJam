@@ -14,22 +14,24 @@ public class ScoreManager : MonoBehaviour
         previousHighScore = PlayerPrefs.GetInt("High_Score");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void IncreaseScore(int scoreIncrease)
     {
         currentScore += scoreIncrease;
         scoreText.text = currentScore.ToString();
     }
 
-    public void DecreaseScore(int scoreIncrease)
+    public void DecreaseScore(int scoreDecrease)
     {
-        currentScore -= scoreIncrease;
-        scoreText.text = currentScore.ToString();
+        if (currentScore - scoreDecrease > 0)
+        {
+            currentScore -= scoreDecrease;
+            scoreText.text = currentScore.ToString();
+        }
+        else
+        {
+            currentScore = 0;
+            scoreText.text = currentScore.ToString();
+        }
     }
 
     public void GameEnd()
