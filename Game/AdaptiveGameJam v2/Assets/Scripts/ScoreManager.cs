@@ -22,8 +22,16 @@ public class ScoreManager : MonoBehaviour
 
     public void DecreaseScore(int scoreDecrease)
     {
-        currentScore -= scoreDecrease;
-        scoreText.text = currentScore.ToString();
+        if (currentScore - scoreDecrease > 0)
+        {
+            currentScore -= scoreDecrease;
+            scoreText.text = currentScore.ToString();
+        }
+        else
+        {
+            currentScore = 0;
+            scoreText.text = currentScore.ToString();
+        }
     }
 
     public void GameEnd()
