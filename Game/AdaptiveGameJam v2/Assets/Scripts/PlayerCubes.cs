@@ -14,14 +14,30 @@ public class PlayerCubes : MonoBehaviour
     void Start()
     {
        
-        GameObject manager = GameObject.FindGameObjectWithTag("GameController");
-        playerManager = manager.GetComponent<PlayerManager>();
+        //GameObject manager = GameObject.FindGameObjectWithTag("GameController");
+        //playerManager = manager.GetComponent<PlayerManager>();
         
     }
 
     private void Update()
     {
+<<<<<<< Updated upstream
         
+=======
+        if (Input.GetButtonDown("Transparent"))
+        {
+            gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+            
+        }
+        if (Input.GetButtonUp("Transparent"))
+        {
+            gameObject.GetComponent<MeshRenderer>().material = gridMaterial;
+        }
+        if (playerManager.gameOver)
+        {
+            Destroy(gameObject);
+        }
+>>>>>>> Stashed changes
     }
 
    
@@ -36,6 +52,9 @@ public class PlayerCubes : MonoBehaviour
             //print("died");
         }
     }
+<<<<<<< Updated upstream
 
     
+=======
+>>>>>>> Stashed changes
 }
