@@ -12,17 +12,18 @@ public class MenuController : MonoBehaviour
     //Variables
 
 
-    //References
+    //Hierarchy References
     [SerializeField] Text highScoreText;
+    [SerializeField] GameObject[] creditsText;
+
+    //Prefab References
+    [SerializeField] GameObject musicManagerPrefab;
 
 
     //Engine-called
     void Start(){
         LoadHighScore();
-    }
-
-    void Update(){
-
+        LoadMusic();
     }
 
 
@@ -32,8 +33,8 @@ public class MenuController : MonoBehaviour
         LoadLevel();
     }
 
-    public void QuitButton(){
-
+    public void CreditsButton(){
+        ShowCreditsText();
     }
 
 
@@ -43,7 +44,20 @@ public class MenuController : MonoBehaviour
         highScoreText.text = "Best: " + bestScore;
     }
 
+    void LoadMusic(){
+        if (!PersistentVariables.musicSpawned){
+            Instantiate(musicManagerPrefab);
+            PersistentVariables.musicSpawned = true;
+        }
+    }
+
     void LoadLevel(){
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    void ShowCreditsText(){
+        foreach (GameObject g in creditsText){
+            g.SetActive(!g.activeSelf);
+        }
     }
 }
