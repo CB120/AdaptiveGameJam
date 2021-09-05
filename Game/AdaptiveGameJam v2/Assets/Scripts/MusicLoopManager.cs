@@ -27,7 +27,6 @@ public class MusicLoopManager : MonoBehaviour
         Invoke("LoopTrack", loopEndTime);
     }
 
-
     //Methods
     void LoopTrack(){
         oldPlayer = newPlayer;

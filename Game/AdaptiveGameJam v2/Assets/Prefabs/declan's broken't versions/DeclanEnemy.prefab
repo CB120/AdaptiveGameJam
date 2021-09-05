@@ -4828,7 +4828,7 @@ GameObject:
   - component: {fileID: 4265756315829668370}
   - component: {fileID: 6260244924275385873}
   m_Layer: 4
-  m_Name: Enemy
+  m_Name: EnemyDeclan
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4876,7 +4876,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af451b10418e1654f8c0525b6a587d9d, type: 2}
+  - {fileID: 2100000, guid: 6602bdd6091b54b41bc76c5d46f888fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4926,8 +4926,8 @@ MonoBehaviour:
   ConnectedCubes: []
   AmtToPass: 0
   moveSpeed: 10
+  passedThroughTime: 0
   getFucked: 0
-  GameMode: {fileID: 0}
 --- !u!114 &4265756315829668370
 MonoBehaviour:
   m_ObjectHideFlags: 0

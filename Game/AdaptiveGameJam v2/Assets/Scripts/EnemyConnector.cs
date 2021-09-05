@@ -15,11 +15,17 @@ public class EnemyConnector : MonoBehaviour
     private void Start()
     {
         GameMode = GameObject.FindWithTag("GameController").GetComponent<GamemodeManager>();
-        moveSpeed += GameMode.waveNumber + Time.deltaTime;  // divide by point count or something
+        
+            moveSpeed += GameMode.waveNumber + Time.deltaTime;
+        // divide by point count or something
     }
 
     private void Update()
     { 
+        if(moveSpeed > 18)
+        {
+            moveSpeed = 18;
+        }
         transform.position = new Vector3(transform.position.x, transform.position.y, (transform.position.z - (moveSpeed * Time.deltaTime)));
 
         if (transform.position.z <= -10 || getFucked)

@@ -28,8 +28,6 @@ public class ScoreManager : MonoBehaviour
             scoreText.color = new Color(0, 255f, 0);
             
         }
-
-       
     }
 
 
@@ -37,30 +35,36 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseScore(int scoreIncrease)
     {
-        scoreText.color = new Color(255, 255f, 255f);
-        
-        currentScore += scoreIncrease;
-        scoreText.text = currentScore.ToString();
-        passCube();
+        if (!playerManager.gameOver)
+        {
+            scoreText.color = new Color(255, 255f, 255f);
+
+            currentScore += scoreIncrease;
+            scoreText.text = currentScore.ToString();
+            passCube();
+        }
 
         
     }
 
     public void DecreaseScore(int scoreDecrease)
     {
-        scoreText.color = new Color(255, 0f, 0f);
-        
+        if (!playerManager.gameOver)
+        {
+            scoreText.color = new Color(255, 0f, 0f);
 
-        if (currentScore - scoreDecrease > 0)
-        {
-            currentScore -= scoreDecrease;
-            scoreText.text = currentScore.ToString();
-        }
-        else
-        {
-            playerManager.gameOver = true; // If the player hits 0 after the game starts they die
-            currentScore = 0;
-            scoreText.text = currentScore.ToString();
+
+            if (currentScore - scoreDecrease > 0)
+            {
+                currentScore -= scoreDecrease;
+                scoreText.text = currentScore.ToString();
+            }
+            else
+            {
+                playerManager.gameOver = true; // If the player hits 0 after the game starts they die
+                currentScore = 0;
+                scoreText.text = currentScore.ToString();
+            }
         }
         
     }

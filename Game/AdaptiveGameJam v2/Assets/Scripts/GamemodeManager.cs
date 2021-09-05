@@ -40,54 +40,57 @@ public class GamemodeManager : MonoBehaviour
     void Update()
     {
         //Update the timer
-        if(timer < waveLength)
+        if (!PMScript.gameOver)
         {
-            timer += Time.deltaTime;
-            //Debug.Log(timer);
-        }
-        //If we reach the end of a wave
-        else if(timer >= waveLength)
-        {
-            waveNumber++;
-            //Determine gamemode based on current wave
-            if (currentWave % 2 == 0)
+            if (timer < waveLength)
             {
-                currentGameMode = GameMode.PerspectiveShift;
-                
-                SpawnEnemyScript.alternateGameMode = true;
-                if (!PMScript.gameOver)
+                timer += Time.deltaTime;
+                //Debug.Log(timer);
+            }
+            //If we reach the end of a wave
+            else if (timer >= waveLength)
+            {
+                waveNumber++;
+                //Determine gamemode based on current wave
+                if (currentWave % 2 == 0)
                 {
-                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
-                    {
-                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
-                    }
+                    currentGameMode = GameMode.PerspectiveShift;
 
-                    for(int i = 0; i < spawnGrid.Buttons.Length; i++)
+                    SpawnEnemyScript.alternateGameMode = true;
+                    if (!PMScript.gameOver)
                     {
-                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                        for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                        {
+                            SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                        }
+
+                        for (int i = 0; i < spawnGrid.Buttons.Length; i++)
+                        {
+                            spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                        }
                     }
                 }
-            }
-            else
-            {
-                if (!PMScript.gameOver)
+                else
                 {
-                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                    if (!PMScript.gameOver)
                     {
-                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
-                    }
+                        for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                        {
+                            SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                        }
 
-                    for (int i = 0; i < spawnGrid.Buttons.Length; i++)
-                    {
-                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                        for (int i = 0; i < spawnGrid.Buttons.Length; i++)
+                        {
+                            spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                        }
                     }
+                    currentGameMode = GameMode.Adapt;
+                    SpawnEnemyScript.alternateGameMode = false;
                 }
-                currentGameMode = GameMode.Adapt;
-                SpawnEnemyScript.alternateGameMode = false;
+                //Update our wave variables
+                timer = 0;
+                currentWave++;
             }
-            //Update our wave variables
-            timer = 0;
-            currentWave++;        
         }
 
         //Update the UI
