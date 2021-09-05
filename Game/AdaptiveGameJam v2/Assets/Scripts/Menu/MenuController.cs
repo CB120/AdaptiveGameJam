@@ -14,15 +14,12 @@ public class MenuController : MonoBehaviour
 
     //References
     [SerializeField] Text highScoreText;
+    [SerializeField] GameObject[] creditsText;
 
 
     //Engine-called
     void Start(){
         LoadHighScore();
-    }
-
-    void Update(){
-
     }
 
 
@@ -32,8 +29,8 @@ public class MenuController : MonoBehaviour
         LoadLevel();
     }
 
-    public void QuitButton(){
-
+    public void CreditsButton(){
+        ShowCreditsText();
     }
 
 
@@ -45,5 +42,11 @@ public class MenuController : MonoBehaviour
 
     void LoadLevel(){
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    void ShowCreditsText(){
+        foreach (GameObject g in creditsText){
+            g.SetActive(!g.activeSelf);
+        }
     }
 }
