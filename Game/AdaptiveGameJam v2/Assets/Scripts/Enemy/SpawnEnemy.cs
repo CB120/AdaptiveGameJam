@@ -79,10 +79,13 @@ public class SpawnEnemy : MonoBehaviour
 
     void CamSwapper()
     {
-       
-        Vector3 lerpCam = CameraLocations[0].transform.position;
-        MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, lerpCam, camMoveSpeed * Time.deltaTime);
-        MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
+        if (CameraLocations[0])
+        {
+            Vector3 lerpCam = CameraLocations[0].transform.position;
+
+            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, lerpCam, camMoveSpeed * Time.deltaTime);
+            MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
+        }
     }
 
     void InitWalls()
