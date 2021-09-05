@@ -10,7 +10,6 @@ public class SpawnGrid : MonoBehaviour
     public Button[] Buttons = new Button[9];
     private GameObject GridParent;
     public int playerCollisions = 0;
-    private bool bChangeGameMode = true;
 
 
     //Materials
