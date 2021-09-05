@@ -11,7 +11,7 @@ public class EnemyCubes : MonoBehaviour
 
     public Material transparentMaterial;
 
-    private float duration = 300f;
+    //private float duration = 300f;
     float t;
     ParticleSystem Particles;
     void Start()

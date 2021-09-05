@@ -126,10 +126,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cecc5abac7a16848b03e8811863b62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
   gridMaterial: {fileID: 2100000, guid: 3013e6e2eadd9834fb5260de888717b7, type: 2}
   transparentMaterial: {fileID: 2100000, guid: 37f59b64480fa84468253dfe267b1ba4, type: 2}
   audiosource: {fileID: 7668771924464401543}
   gridClick: {fileID: 8300000, guid: 47ec6f432f7566b4fb1c1a4338e489bd, type: 3}
+  UnclickGrid: {fileID: 8300000, guid: 33dd2afcd2fea8b44a20790d3e128580, type: 3}
 --- !u!82 &7668771924464401543
 AudioSource:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 47ec6f432f7566b4fb1c1a4338e489bd, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

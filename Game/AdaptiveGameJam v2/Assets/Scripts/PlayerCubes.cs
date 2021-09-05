@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerCubes : MonoBehaviour
 {
+    public CameraShake cameraShake;
     PlayerManager playerManager;
     public Material gridMaterial, transparentMaterial;
-    public AudioSource audiosource;
-    public AudioClip gridClick;
+    
 
     // Start is called before the first frame update
     
@@ -29,7 +29,7 @@ public class PlayerCubes : MonoBehaviour
         if (Input.GetButtonUp("Transparent"))
         {
             gameObject.GetComponent<MeshRenderer>().material = gridMaterial;
-            playClip();
+            
         }
         if (playerManager.gameOver)
         {
@@ -37,21 +37,17 @@ public class PlayerCubes : MonoBehaviour
         }
     }
 
-
+   
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
+            //StartCoroutine(cameraShake.Shake(.10f, .4f));
             //playerManager.gameOver = true;
             playerManager.Damaged();
             //print("died");
         }
     }
 
-    void playClip()
-    {
-        audiosource.clip = gridClick;
-        audiosource.Play();
-    }
+    
 }
