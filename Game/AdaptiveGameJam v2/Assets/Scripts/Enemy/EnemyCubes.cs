@@ -11,11 +11,13 @@ public class EnemyCubes : MonoBehaviour
 
     public Material transparentMaterial;
 
+    GamemodeManager gamemodeManager;
     //private float duration = 300f;
     float t;
     ParticleSystem Particles;
     void Start()
     {
+        gamemodeManager = FindObjectOfType<GamemodeManager>();
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         spawnGrid = gameManager.GetComponent<SpawnGrid>();
         scoreManager = gameManager.GetComponent<ScoreManager>();
@@ -57,10 +59,32 @@ public class EnemyCubes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
         {
-            hasHit = true;
-            scoreManager.IncreaseScore(10);
+            if (other.gameObject.tag == "Player")
+            {
+                hasHit = true;
+                scoreManager.IncreaseScore(10);
+            }
+        }
+        else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        {
+            if(other.gameObject.tag == "Player")
+            {
+                scoreManager.IncreaseScore(10);
+                hasHit = true;
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                playerManager.Damaged();
+            }
         }
     }
 }

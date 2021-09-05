@@ -6,13 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< Updated upstream
     path: Assets/Scenes/Final scenes for game/Main Menu.unity
-=======
-    path: Assets/Scenes/Game Scenes/Main Menu.unity
->>>>>>> Stashed changes
     guid: 416f4dc3371bee041b6c1ff5cd594e9f
   - enabled: 1
-    path: Assets/Scenes/Final scenes for game/Master Scene.unity
-    guid: a17fb25b94467b141aa6d8b0a46e3d82
+    path: Assets/Scenes/MasterScene.unity
+    guid: e7786ec8e3fd15945a3f25c3cf532ea8
   m_configObjects: {}

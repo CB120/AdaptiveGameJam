@@ -7,13 +7,14 @@ public class PlayerCubes : MonoBehaviour
     public CameraShake cameraShake;
     PlayerManager playerManager;
     public Material gridMaterial, transparentMaterial;
-    
+    GamemodeManager GM;
+
 
     // Start is called before the first frame update
-    
+
     void Start()
     {
-       
+        GM = FindObjectOfType<GamemodeManager>();
         GameObject manager = GameObject.FindGameObjectWithTag("GameController");
         playerManager = manager.GetComponent<PlayerManager>();
         
@@ -43,6 +44,7 @@ public class PlayerCubes : MonoBehaviour
         {
             //StartCoroutine(cameraShake.Shake(.10f, .4f));
             //playerManager.gameOver = true;
+            print("HIT ENEMY");
             Destroy(gameObject);
             playerManager.Damaged();
             //print("died");

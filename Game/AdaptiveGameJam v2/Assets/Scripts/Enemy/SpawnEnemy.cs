@@ -99,6 +99,7 @@ public class SpawnEnemy : MonoBehaviour
 
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, lerpCam, camMoveSpeed * Time.deltaTime);
             MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
+            
         }
     }
 
