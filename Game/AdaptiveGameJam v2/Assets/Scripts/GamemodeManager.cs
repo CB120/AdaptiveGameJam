@@ -17,6 +17,8 @@ public class GamemodeManager : MonoBehaviour
     [SerializeField] private float waveLength = 15;
     private int currentWave = 0;
 
+    public int waveNumber = 0;
+
     //References to UI
     //public Text timeDisplay;
     //public Text waveDisplay;
@@ -46,6 +48,7 @@ public class GamemodeManager : MonoBehaviour
         //If we reach the end of a wave
         else if(timer >= waveLength)
         {
+            waveNumber++;
             //Determine gamemode based on current wave
             if (currentWave % 2 == 0)
             {
