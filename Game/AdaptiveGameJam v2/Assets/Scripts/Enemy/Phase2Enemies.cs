@@ -41,6 +41,12 @@ public class Phase2Enemies : MonoBehaviour
             DestroyExisting();
             hasInvoked = false;
         }
+        if (PMScript.gameOver)
+        {
+            CancelInvoke("DoWalls");
+            DestroyExisting();
+            
+        }
     }
 
     void DestroyExisting()

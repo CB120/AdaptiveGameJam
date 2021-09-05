@@ -30,9 +30,6 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-
-
-
     public void IncreaseScore(int scoreIncrease)
     {
         if (!playerManager.gameOver)
