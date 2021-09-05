@@ -521,11 +521,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!4 &167462309 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7269061380361934063, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
-  m_PrefabInstance: {fileID: 1102293569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193207262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1627,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128872295}
     m_Modifications:
+    - target: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7269061380361934032, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
       propertyPath: m_Name
       value: LavaParticles
@@ -1682,6 +1681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+--- !u!4 &463253855 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+  m_PrefabInstance: {fileID: 463253854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484000746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2539,6 +2543,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128872295}
     m_Modifications:
+    - target: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7269061380361934032, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
       propertyPath: m_Name
       value: LavaParticles (3)
@@ -2589,6 +2597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+--- !u!4 &1049625189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+  m_PrefabInstance: {fileID: 1049625188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1076868873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2688,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128872295}
     m_Modifications:
+    - target: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7269061380361934032, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
       propertyPath: m_Name
       value: LavaParticles (2)
@@ -2725,6 +2742,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+--- !u!4 &1102293570 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+  m_PrefabInstance: {fileID: 1102293569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1108871050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,11 +7925,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!4 &1498708739 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7269061380361934063, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
-  m_PrefabInstance: {fileID: 1911119897}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1511610208
 GameObject:
   m_ObjectHideFlags: 0
@@ -12758,11 +12775,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.3, y: 0}
   m_SizeDelta: {x: 950, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &1583907514 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7269061380361934063, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
-  m_PrefabInstance: {fileID: 2113901687}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1627588245
 GameObject:
   m_ObjectHideFlags: 0
@@ -12858,11 +12870,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627588245}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1644493130 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7269061380361934063, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
-  m_PrefabInstance: {fileID: 1049625188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1682574269
 GameObject:
   m_ObjectHideFlags: 0
@@ -13455,6 +13462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128872295}
     m_Modifications:
+    - target: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7269061380361934032, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
       propertyPath: m_Name
       value: LavaParticles (1)
@@ -13505,6 +13516,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+--- !u!4 &1911119898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+  m_PrefabInstance: {fileID: 1911119897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1914267218
 GameObject:
   m_ObjectHideFlags: 0
@@ -13682,8 +13698,11 @@ MonoBehaviour:
   - {fileID: 425853265}
   - {fileID: 549529612}
   - {fileID: 429065459}
-  gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
   playerCollisions: 0
+  gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
+  transparentGridMaterial: {fileID: 0}
+  enemyMaterial: {fileID: 0}
+  transparentEnemyMaterial: {fileID: 0}
   audiosource: {fileID: 1915466738}
   gridClick: {fileID: 8300000, guid: 47ec6f432f7566b4fb1c1a4338e489bd, type: 3}
   UnclickGrid: {fileID: 8300000, guid: 33dd2afcd2fea8b44a20790d3e128580, type: 3}
@@ -13798,9 +13817,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSprites:
-  - {fileID: 21300000, guid: bddac3e34a78aa444bc8f182163a3cac, type: 3}
-  - {fileID: 21300000, guid: 1711d2b6afcdbf24eb742325dc9b60a4, type: 3}
-  - {fileID: 21300000, guid: 3aae9c25eff036546ac53d7221f14163, type: 3}
+  - {fileID: 21300000, guid: 1bf111722edf85745b4e8db4fa510050, type: 3}
+  - {fileID: 21300000, guid: ac0ff710f7729734aa1362adfbd2bf5d, type: 3}
+  - {fileID: 21300000, guid: 3d7570e3a608b1c43be56edcad5c6772, type: 3}
   lifeImage: {fileID: 879965439}
 --- !u!114 &1915466740
 MonoBehaviour:
@@ -13816,6 +13835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameMode: 0
   waveLength: 30
+  waveNumber: 0
 --- !u!114 &1915466741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14125,11 +14145,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: -5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0, y: 1}
---- !u!4 &2050759483 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7269061380361934063, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
-  m_PrefabInstance: {fileID: 463253854}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2113901687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14137,6 +14152,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2128872295}
     m_Modifications:
+    - target: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7269061380361934032, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
       propertyPath: m_Name
       value: LavaParticles (4)
@@ -14187,6 +14206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+--- !u!4 &2113901688 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 485491945909742975, guid: d64857505afa1c6489a8e5cdcb589d31, type: 3}
+  m_PrefabInstance: {fileID: 2113901687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2128872294
 GameObject:
   m_ObjectHideFlags: 0
@@ -14215,11 +14239,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1682574270}
-  - {fileID: 2050759483}
-  - {fileID: 1498708739}
-  - {fileID: 167462309}
-  - {fileID: 1644493130}
-  - {fileID: 1583907514}
+  - {fileID: 463253855}
+  - {fileID: 1911119898}
+  - {fileID: 1102293570}
+  - {fileID: 1049625189}
+  - {fileID: 2113901688}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
