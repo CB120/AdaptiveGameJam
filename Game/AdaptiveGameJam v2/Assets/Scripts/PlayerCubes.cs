@@ -21,7 +21,7 @@ public class PlayerCubes : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Transparent"))
+        /*if (Input.GetButtonDown("Transparent"))
         {
             gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
             
@@ -34,7 +34,7 @@ public class PlayerCubes : MonoBehaviour
         if (playerManager.gameOver)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
    

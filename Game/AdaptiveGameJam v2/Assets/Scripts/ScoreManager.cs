@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     int currentScore = 0;
     int previousHighScore;
 
-    bool hasHitZeroTwice = false;
+   // bool hasHitZeroTwice = false;
     PlayerManager playerManager;
     void Start()
     {

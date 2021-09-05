@@ -12385,8 +12385,14 @@ MonoBehaviour:
   - {fileID: 1800788822}
   - {fileID: 369692303}
   - {fileID: 1238767108}
-  gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
   playerCollisions: 0
+  gridMaterial: {fileID: 2100000, guid: 3013e6e2eadd9834fb5260de888717b7, type: 2}
+  transparentGridMaterial: {fileID: 2100000, guid: 37f59b64480fa84468253dfe267b1ba4, type: 2}
+  enemyMaterial: {fileID: 2100000, guid: af451b10418e1654f8c0525b6a587d9d, type: 2}
+  transparentEnemyMaterial: {fileID: 2100000, guid: 7415eb19264e91543b6ffdf0d2884de3, type: 2}
+  audiosource: {fileID: 1271446645}
+  gridClick: {fileID: 8300000, guid: 47ec6f432f7566b4fb1c1a4338e489bd, type: 3}
+  UnclickGrid: {fileID: 8300000, guid: 33dd2afcd2fea8b44a20790d3e128580, type: 3}
   EnemySpawnerScript: {fileID: 0}
   gamemodeManager: {fileID: 0}
 --- !u!114 &1271446640
@@ -12402,9 +12408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: bddac3e34a78aa444bc8f182163a3cac, type: 3}
+  - {fileID: 21300000, guid: 1711d2b6afcdbf24eb742325dc9b60a4, type: 3}
+  - {fileID: 21300000, guid: 3aae9c25eff036546ac53d7221f14163, type: 3}
   lifeImage: {fileID: 221953806}
 --- !u!114 &1271446641
 MonoBehaviour:
@@ -12447,7 +12453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced5549a781cd6c42bc1c113a4179c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 1271446645}
+  SourceHerePls: {fileID: 1271446645}
   BoxHit: {fileID: 8300000, guid: 037c301234eff684381c40696ec6ae7c, type: 3}
   GameOver: {fileID: 8300000, guid: 8b1ca8d886682654a92b72274d4c8812, type: 3}
   gameOver: 0
@@ -12476,7 +12482,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

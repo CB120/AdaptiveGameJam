@@ -9,10 +9,15 @@ public class SpawnGrid : MonoBehaviour
     GameObject[] Cubes;
     public Button[] Buttons = new Button[9];
     private GameObject GridParent;
-    public Material gridMaterial;
     public int playerCollisions = 0;
+    private bool bChangeGameMode = true;
 
 
+    //Materials
+    public Material gridMaterial;
+    public Material transparentGridMaterial;
+    public Material enemyMaterial;
+    public Material transparentEnemyMaterial;
     // Audio 
     public AudioSource audiosource;
     public AudioClip gridClick;
@@ -52,18 +57,84 @@ public class SpawnGrid : MonoBehaviour
 
     private void Update()
     {
-        //If we are in perspective shift mode
-       if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
-       {
-            //Debug.Log("we rollin");
-            RotatePlayer();
-       }
-       //If we return back to the adapt mode and haven't reset our transform
-       else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt && !resetTransform)
-       {
+      
+        
+        //If we return back to the adapt mode and haven't reset our transform
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt && !resetTransform)
+        {
             ResetPlayerRotation();
             //Debug.Log("we ain't rollin");
-       }
+        }
+
+        //For Cube Transpareny
+
+        //For Blue Cubes
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
+        {
+            if (Input.GetButton("Transparent"))
+            {
+                foreach (GameObject gridCube in Cubes)
+                {
+                    if (gridCube)
+                    {
+                        gridCube.GetComponent<MeshRenderer>().material = transparentGridMaterial;
+                    }
+                }
+
+            }
+            if (Input.GetButtonUp("Transparent"))
+            {
+                foreach (GameObject gridCube in Cubes)
+                {
+                    if (gridCube)
+                    {
+                        gridCube.GetComponent<MeshRenderer>().material = gridMaterial;
+                    }
+                }
+            }
+
+            foreach(GameObject enemyCube in EnemySpawnerScript.EnemyWall)
+            {
+                if (enemyCube && enemyCube.GetComponent<MeshRenderer>().material != enemyMaterial)
+                {
+                    enemyCube.GetComponent<MeshRenderer>().material = enemyMaterial;
+                }
+            }
+        }
+        //For Red Cubes
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        {
+             if (Input.GetButton("Transparent"))
+             {
+                foreach (GameObject enemyCube in EnemySpawnerScript.EnemyWall)
+                {
+                    if (enemyCube)
+                    {
+                        enemyCube.GetComponent<MeshRenderer>().material = transparentEnemyMaterial;
+                    }
+                }
+
+            }
+            if (Input.GetButtonUp("Transparent"))
+            {
+                foreach (GameObject enemyCube in EnemySpawnerScript.EnemyWall)
+                {
+                    if (enemyCube)
+                    {
+                        enemyCube.GetComponent<MeshRenderer>().material = enemyMaterial;
+                    }
+                }
+            }
+
+            foreach (GameObject gridCube in Cubes)
+            {
+                if (gridCube && gridCube.GetComponent<MeshRenderer>().material != gridMaterial)
+                {
+                    gridCube.GetComponent<MeshRenderer>().material = gridMaterial;
+                }
+            }   
+            
+        }
     }
 
     // Audio functions
@@ -87,6 +158,8 @@ public class SpawnGrid : MonoBehaviour
         //If we are currently in the Adapt gamemode
         if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
         {
+            
+
             if (!Cubes[0])
             {
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 3, 0), Quaternion.identity);
@@ -469,7 +542,7 @@ public class SpawnGrid : MonoBehaviour
         }
     }
 
-    public void RotatePlayer()
+   /* public void RotatePlayer()
     {
         //Flip resetTransform
         resetTransform = !resetTransform;
@@ -494,7 +567,7 @@ public class SpawnGrid : MonoBehaviour
             Debug.Log("Roll Backward");
             GridParent.transform.Rotate(new Vector3(GridParent.transform.rotation.x - 90f, 0f, 0f), Space.World);
         }
-    }
+    }*/
 
     public void ResetPlayerRotation()
     {
