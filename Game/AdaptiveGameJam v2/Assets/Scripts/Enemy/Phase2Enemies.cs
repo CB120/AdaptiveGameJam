@@ -55,7 +55,7 @@ public class Phase2Enemies : MonoBehaviour
 
     void StartWall()
     {
-        InvokeRepeating("DoWalls", 1.5f, 4.0f);
+        InvokeRepeating("DoWalls", 1.5f, 4.25f);
     }
 
     void DoWalls()
