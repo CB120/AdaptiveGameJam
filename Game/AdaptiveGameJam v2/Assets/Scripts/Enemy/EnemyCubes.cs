@@ -67,9 +67,9 @@ public class EnemyCubes : MonoBehaviour
                 scoreManager.IncreaseScore(10);
             }
         }
-        else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
         {
-            if(other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "Player")
             {
                 scoreManager.IncreaseScore(10);
                 hasHit = true;

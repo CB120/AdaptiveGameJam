@@ -4926,7 +4926,8 @@ MonoBehaviour:
   ConnectedCubes: []
   AmtToPass: 0
   moveSpeed: 10
-  passedThroughTime: 0
+  getFucked: 0
+  GameMode: {fileID: 0}
 --- !u!114 &4265756315829668370
 MonoBehaviour:
   m_ObjectHideFlags: 0
