@@ -110,12 +110,14 @@ public class SpawnGrid : MonoBehaviour
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
                 }
             }
         }
@@ -151,12 +153,14 @@ public class SpawnGrid : MonoBehaviour
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
                     EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
                 }
             }
         }
@@ -192,12 +196,14 @@ public class SpawnGrid : MonoBehaviour
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
                 }
             }
         }
@@ -233,12 +239,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
                 }
             }
         }
@@ -274,13 +282,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<BoxCollider>().isTrigger = false;
-
+                    depressGrid();
                 }
             }
         }
@@ -316,13 +325,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<BoxCollider>().isTrigger = false;
-
+                    depressGrid();
                 }
             }
         }
@@ -358,12 +368,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
 
                 }
             }
@@ -400,12 +412,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
                 }
             }
         }
@@ -441,12 +455,14 @@ public class SpawnGrid : MonoBehaviour
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    gridPress();
                 }
                 else
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled = true;
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    depressGrid();
 
                 }
             }
