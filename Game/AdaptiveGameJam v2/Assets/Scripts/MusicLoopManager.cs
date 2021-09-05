@@ -21,13 +21,17 @@ public class MusicLoopManager : MonoBehaviour
     //Engine-called
     void Start(){
         DontDestroyOnLoad(gameObject);
+        SetupLoop();
+    }
 
+
+    //Methods
+    void SetupLoop(){
         newPlayer = Instantiate(musicPlayerPrefab, transform);
         trackLength = newPlayer.GetComponent<AudioSource>().clip.length;
         Invoke("LoopTrack", loopEndTime);
     }
 
-    //Methods
     void LoopTrack(){
         oldPlayer = newPlayer;
         newPlayer = Instantiate(musicPlayerPrefab, transform);
