@@ -8474,7 +8474,7 @@ PrefabInstance:
     - target: {fileID: 1937438548063429520, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
       propertyPath: spawnGrid
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 964331313}
     - target: {fileID: 1937438548063429522, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
       propertyPath: m_Sprite
       value: 
