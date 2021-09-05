@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public AudioSource audiosource;
     public AudioClip PassCube;
+    //public AudioClip highScore;
     public Text scoreText;
     int currentScore = 0;
     int previousHighScore;
@@ -23,8 +24,12 @@ public class ScoreManager : MonoBehaviour
         if(currentScore > previousHighScore)
         {
             scoreText.color = new Color(0, 255f, 0);
+            
         }
     }
+
+
+
 
     public void IncreaseScore(int scoreIncrease)
     {
@@ -32,7 +37,9 @@ public class ScoreManager : MonoBehaviour
         
         currentScore += scoreIncrease;
         scoreText.text = currentScore.ToString();
-        playClip();
+        passCube();
+
+        
     }
 
     public void DecreaseScore(int scoreDecrease)
@@ -57,12 +64,19 @@ public class ScoreManager : MonoBehaviour
         {
             scoreText.color = new Color(255, 0f, 0f);
             PlayerPrefs.SetInt("High_Score", currentScore);
+            
         }
     }
 
-    void playClip()
+    void passCube()
     {
         audiosource.clip = PassCube;
         audiosource.Play();
     }
+    /*
+    void HighScore()
+    {
+        audiosource.clip = highScore;
+        audiosource.Play();
+    } */
 }
