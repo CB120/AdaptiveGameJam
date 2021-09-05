@@ -12,14 +12,18 @@ public class MenuController : MonoBehaviour
     //Variables
 
 
-    //References
+    //Hierarchy References
     [SerializeField] Text highScoreText;
     [SerializeField] GameObject[] creditsText;
+
+    //Prefab References
+    [SerializeField] GameObject musicManagerPrefab;
 
 
     //Engine-called
     void Start(){
         LoadHighScore();
+        LoadMusic();
     }
 
 
@@ -38,6 +42,13 @@ public class MenuController : MonoBehaviour
     void LoadHighScore(){
         int bestScore = PlayerPrefs.GetInt("High_Score", 0);
         highScoreText.text = "Best: " + bestScore;
+    }
+
+    void LoadMusic(){
+        if (!PersistentVariables.musicSpawned){
+            Instantiate(musicManagerPrefab);
+            PersistentVariables.musicSpawned = true;
+        }
     }
 
     void LoadLevel(){
