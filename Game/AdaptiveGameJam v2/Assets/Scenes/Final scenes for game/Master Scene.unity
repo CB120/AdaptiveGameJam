@@ -12142,6 +12142,7 @@ MonoBehaviour:
   SourceHerePls: {fileID: 964331314}
   BoxHit: {fileID: 8300000, guid: 037c301234eff684381c40696ec6ae7c, type: 3}
   GameOver: {fileID: 8300000, guid: 8b1ca8d886682654a92b72274d4c8812, type: 3}
+  ResetHighScore: 0
   gameOver: 0
   GameOverScreen: {fileID: 644380445}
 --- !u!4 &964331319

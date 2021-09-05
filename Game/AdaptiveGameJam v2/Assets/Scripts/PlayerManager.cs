@@ -11,15 +11,20 @@ public class PlayerManager : MonoBehaviour
     public AudioSource SourceHerePls;
     public AudioClip BoxHit;
     public AudioClip GameOver;
+    public bool ResetHighScore = false;
 
     public bool gameOver = false; // Called in PlayerCubes.cs
     public GameObject GameOverScreen;
     bool resetTime = false;
     int Health = 3;
+
+    ScoreManager scoreManager;
     void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
         uiManager = gameManager.GetComponent<UIManager>();
+        scoreManager = gameManager.GetComponent<ScoreManager>();
+        if (ResetHighScore) { PlayerPrefs.SetInt("High_Score", 0); }
     }
 
     void SboxHit()
@@ -40,7 +45,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver) //RESTART THE GAME
         {
-            
+            scoreManager.GameEnd();
             if (!resetTime)
             {
                 //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
@@ -86,7 +91,7 @@ public class PlayerManager : MonoBehaviour
         {
             gameOver = true;
         }
-        Debug.Log("Health = " + Health);
+        //Debug.Log("Health = " + Health);
     }
  
 }
