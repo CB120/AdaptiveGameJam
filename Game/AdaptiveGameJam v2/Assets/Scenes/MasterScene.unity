@@ -11521,7 +11521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced5549a781cd6c42bc1c113a4179c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 809172553}
+  SourceHerePls: {fileID: 809172553}
   BoxHit: {fileID: 8300000, guid: 037c301234eff684381c40696ec6ae7c, type: 3}
   GameOver: {fileID: 8300000, guid: 8b1ca8d886682654a92b72274d4c8812, type: 3}
   gameOver: 0

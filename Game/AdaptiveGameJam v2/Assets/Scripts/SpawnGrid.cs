@@ -12,6 +12,14 @@ public class SpawnGrid : MonoBehaviour
     public Material gridMaterial;
     public int playerCollisions = 0;
 
+
+    // Audio 
+    public AudioSource audiosource;
+    public AudioClip gridClick;
+    public AudioClip UnclickGrid;
+
+
+
     //Player's default transform
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
@@ -58,8 +66,21 @@ public class SpawnGrid : MonoBehaviour
        }
     }
 
+    // Audio functions
+    void gridPress()
+    {
+        audiosource.clip = gridClick;
+        audiosource.Play();
+    }
+
+    void depressGrid()
+    {
+        audiosource.clip = UnclickGrid;
+        audiosource.Play();
+    }
+
     //Methods used to spawn blocks
-    
+
     public void Spawn1()
     {
         int indexPosition = 0;
@@ -71,11 +92,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 3, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else 
             {
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
                 Destroy(Cubes[indexPosition]);
+                depressGrid();
             }
         }
         else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -110,11 +133,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(0, 3, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -149,11 +174,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(1, 3, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -188,11 +215,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 2, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -227,11 +256,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(0, 2, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -267,11 +298,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(1, 2, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -307,11 +340,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 1, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -347,11 +382,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(0, 1, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
@@ -386,11 +423,13 @@ public class SpawnGrid : MonoBehaviour
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(1, 1, 0), Quaternion.identity);
                 Cubes[indexPosition].transform.parent = GridParent.transform;
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                gridPress();
             }
             else
             {
                 Destroy(Cubes[indexPosition]);
                 Buttons[indexPosition].GetComponent<Image>().SetTransparency(0.2f);
+                depressGrid();
             }
         }
         else if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)

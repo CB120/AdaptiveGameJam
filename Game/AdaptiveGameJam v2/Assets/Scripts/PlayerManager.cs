@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     UIManager uiManager;
 
-    public AudioSource deathSound;
+    public AudioSource SourceHerePls;
     public AudioClip BoxHit;
     public AudioClip GameOver;
 
@@ -23,14 +23,14 @@ public class PlayerManager : MonoBehaviour
 
     void SboxHit()
     {
-        deathSound.clip = BoxHit;
-        deathSound.Play();
+        SourceHerePls.clip = BoxHit;
+        SourceHerePls.Play();
     }
 
     void SgameOver()
     {
-        deathSound.clip = GameOver;
-        deathSound.Play();
+        SourceHerePls.clip = GameOver;
+        SourceHerePls.Play();
     }
 
     // Update is called once per frame

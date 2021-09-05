@@ -10,8 +10,8 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     int currentScore = 0;
     int previousHighScore;
-    float speed = 1.0f; //how fast it shakes
-    float amount = 1.0f; //how much it shakes
+    //float speed = 1.0f; //how fast it shakes
+    //float amount = 1.0f; //how much it shakes
     void Start()
     {
         // currentScore = 0;
