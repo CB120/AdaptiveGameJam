@@ -10,12 +10,14 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     int currentScore = 0;
     int previousHighScore;
-    float speed = 1.0f; //how fast it shakes
-    float amount = 1.0f; //how much it shakes
+
+    bool hasHitZeroTwice = false;
+    PlayerManager playerManager;
     void Start()
     {
         // currentScore = 0;
         previousHighScore = PlayerPrefs.GetInt("High_Score", 0);
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     private void Update()
@@ -24,6 +26,8 @@ public class ScoreManager : MonoBehaviour
         {
             scoreText.color = new Color(0, 255f, 0);
         }
+
+       
     }
 
     public void IncreaseScore(int scoreIncrease)
@@ -38,6 +42,7 @@ public class ScoreManager : MonoBehaviour
     public void DecreaseScore(int scoreDecrease)
     {
         scoreText.color = new Color(255, 0f, 0f);
+        
 
         if (currentScore - scoreDecrease > 0)
         {
@@ -46,9 +51,11 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
+            playerManager.gameOver = true; // If the player hits 0 after the game starts they die
             currentScore = 0;
             scoreText.text = currentScore.ToString();
         }
+        
     }
 
     public void GameEnd()

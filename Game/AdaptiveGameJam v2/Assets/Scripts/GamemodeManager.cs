@@ -41,7 +41,7 @@ public class GamemodeManager : MonoBehaviour
         if(timer < waveLength)
         {
             timer += Time.deltaTime;
-            Debug.Log(timer);
+            //Debug.Log(timer);
         }
         //If we reach the end of a wave
         else if(timer >= waveLength)
