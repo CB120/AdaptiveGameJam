@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public AudioClip GameOver;
 
     public bool gameOver = false; // Called in PlayerCubes.cs
+    public GameObject GameOverScreen;
     bool resetTime = false;
     int Health = 3;
     void Start()
@@ -31,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     {
         SourceHerePls.clip = GameOver;
         SourceHerePls.Play();
+        GameOverScreen.SetActive(true);
     }
 
     // Update is called once per frame
