@@ -22,12 +22,12 @@ public class SpawnGrid : MonoBehaviour
     public AudioClip gridClick;
     public AudioClip UnclickGrid;
 
-
-
     //Player's default transform
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
     private Vector3 defaultScale;
+
+    UIGridManager UIGrid;
 
     [SerializeField]
     private SpawnEnemy EnemySpawnerScript;
@@ -44,6 +44,7 @@ public class SpawnGrid : MonoBehaviour
 
     private void Start()
     {
+        UIGrid = FindObjectOfType<UIGridManager>();
         Cubes = new GameObject[9];
         GridParent = GameObject.FindGameObjectWithTag("GridParent");
         EnemySpawnerScript = FindObjectOfType<SpawnEnemy>();
@@ -53,16 +54,39 @@ public class SpawnGrid : MonoBehaviour
         defaultRotation = GridParent.transform.rotation;
         defaultScale = GridParent.transform.localScale;
     }
-
+    bool phaseChange = false;
     private void Update()
-    {
-      
-        
+    {  
         //If we return back to the adapt mode and haven't reset our transform
         if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt && !resetTransform)
         {
             ResetPlayerRotation();
             //Debug.Log("we ain't rollin");
+        }
+
+        //reset transparency of UI
+        if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        {
+            if(!phaseChange)
+            {
+                foreach (Button gridButtons in Buttons)
+                {
+                    gridButtons.GetComponent<Image>().SetTransparency(0.2f);
+                }
+                phaseChange = true;
+                UIGrid.DeselectAll();
+            }
+        }
+        else if(gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
+        {
+/*            if(phaseChange)
+            {
+                foreach (Button gridButtons in Buttons)
+                {
+                    gridButtons.GetComponent<Image>().SetTransparency(1f);
+                }
+                phaseChange = false;
+            }*/
         }
 
         //For Cube Transpareny
@@ -180,6 +204,7 @@ public class SpawnGrid : MonoBehaviour
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[8].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    EnemySpawnerScript.EnemyWall[8].gameObject.tag = "Vacant";
                     gridPress();
                 }
                 else
@@ -223,6 +248,8 @@ public class SpawnGrid : MonoBehaviour
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
                     EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[5].gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    EnemySpawnerScript.EnemyWall[5].gameObject.tag = "Vacant";
+
                     gridPress();
                 }
                 else
@@ -264,6 +291,7 @@ public class SpawnGrid : MonoBehaviour
                 if (EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
+                    EnemySpawnerScript.EnemyWall[2].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[2].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     gridPress();
@@ -306,6 +334,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[7].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[7].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
@@ -349,6 +378,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[4].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[4].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
@@ -392,6 +422,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[1].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[1].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
@@ -435,6 +466,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[6].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[6].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
@@ -479,6 +511,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[3].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[3].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);
@@ -522,6 +555,7 @@ public class SpawnGrid : MonoBehaviour
             {
                 if (EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled)
                 {
+                    EnemySpawnerScript.EnemyWall[0].gameObject.tag = "Vacant";
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<MeshRenderer>().enabled = false;
                     EnemySpawnerScript.EnemyWall[0].gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     Buttons[indexPosition].GetComponent<Image>().SetTransparency(1);

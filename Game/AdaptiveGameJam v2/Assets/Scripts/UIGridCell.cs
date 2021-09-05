@@ -9,7 +9,7 @@ public class UIGridCell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] int number;
 
     bool mouseOver = false;
-    bool selected = false;
+    public bool selected = false;
 
     void Start () {
         if (!gridManager) {

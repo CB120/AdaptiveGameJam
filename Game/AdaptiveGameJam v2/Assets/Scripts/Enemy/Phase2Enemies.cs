@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Phase2Enemies : MonoBehaviour
 {
@@ -8,14 +9,19 @@ public class Phase2Enemies : MonoBehaviour
     public GameObject CubeToSpawn;
     public PlayerManager PMScript;
     public GamemodeManager GMManager;
+    SpawnGrid spawnGrid;
 
     bool hasInvoked = false;
+
+    UIGridManager GridManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        GridManager = FindObjectOfType<UIGridManager>();
         GMManager = FindObjectOfType<GamemodeManager>();
         PMScript = FindObjectOfType<PlayerManager>();
+        spawnGrid = FindObjectOfType<SpawnGrid>();
     }
 
     // Update is called once per frame
@@ -54,6 +60,15 @@ public class Phase2Enemies : MonoBehaviour
 
     void DoWalls()
     {
+        //reset transparency of UI
+        if (GMManager.currentGameMode == GamemodeManager.GameMode.PerspectiveShift)
+        {
+            foreach (Button gridButtons in spawnGrid.Buttons)
+            {
+                gridButtons.GetComponent<Image>().SetTransparency(0.2f);
+            }
+            GridManager.DeselectAll();
+        }
         CreateWall();
         CreateConnector();
         randomRemove();

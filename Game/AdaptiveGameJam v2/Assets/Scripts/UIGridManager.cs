@@ -21,4 +21,12 @@ public class UIGridManager : MonoBehaviour
             case 8: spawnGrid.Spawn9(); break;
         }
     }
+
+    public void DeselectAll()
+    {
+        foreach (UIGridCell cell in GetComponentsInChildren<UIGridCell>())
+        {
+            cell.selected = false;
+        }
+    }
 }
