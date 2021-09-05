@@ -8,16 +8,19 @@ public class GamemodeManager : MonoBehaviour
     //Enumerator used to control the current game mode
     public enum GameMode {Adapt,  PerspectiveShift};
     public GameMode currentGameMode = GameMode.Adapt;
+    PlayerManager PMScript;
+    SpawnEnemy SpawnEnemyScript;
+    SpawnGrid spawnGrid;
 
     //Variables used to control waves
     float timer = 0;
-    [SerializeField] private float waveLength = 30;
+    [SerializeField] private float waveLength = 15;
     private int currentWave = 0;
 
     //References to UI
-    public Text timeDisplay;
-    public Text waveDisplay;
-    public Text modeDisplay;
+    //public Text timeDisplay;
+    //public Text waveDisplay;
+    //public Text modeDisplay;
 
 
 
@@ -25,7 +28,10 @@ public class GamemodeManager : MonoBehaviour
     void Start()
     {
         //Default game mode is Adapt
+        PMScript = FindObjectOfType<PlayerManager>();
+        SpawnEnemyScript = FindObjectOfType<SpawnEnemy>();
         currentGameMode = GameMode.Adapt;
+        spawnGrid = FindObjectOfType<SpawnGrid>();
     }
 
     // Update is called once per frame
@@ -35,28 +41,54 @@ public class GamemodeManager : MonoBehaviour
         if(timer < waveLength)
         {
             timer += Time.deltaTime;
+            //Debug.Log(timer);
         }
         //If we reach the end of a wave
         else if(timer >= waveLength)
         {
-            //Update our wave variables
-            timer = 0;
-            currentWave++;
-
             //Determine gamemode based on current wave
-            if(currentWave % 2 == 0)
+            if (currentWave % 2 == 0)
             {
                 currentGameMode = GameMode.PerspectiveShift;
+                
+                SpawnEnemyScript.alternateGameMode = true;
+                if (!PMScript.gameOver)
+                {
+                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                    {
+                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                    }
+
+                    for(int i = 0; i < spawnGrid.Buttons.Length; i++)
+                    {
+                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                    }
+                }
             }
             else
             {
+                if (!PMScript.gameOver)
+                {
+                    for (int i = 0; i < SpawnEnemyScript.EnemyWall.Count; i++)
+                    {
+                        SpawnEnemyScript.EnemyWall[i].GetComponent<EnemyConnector>().getFucked = true;
+                    }
+
+                    for (int i = 0; i < spawnGrid.Buttons.Length; i++)
+                    {
+                        spawnGrid.Buttons[i].GetComponent<Image>().SetTransparency(0.2f);
+                    }
+                }
                 currentGameMode = GameMode.Adapt;
+                SpawnEnemyScript.alternateGameMode = false;
             }
-            
+            //Update our wave variables
+            timer = 0;
+            currentWave++;        
         }
 
         //Update the UI
-        if(waveLength - timer <= 5)
+/*        if (waveLength - timer <= 5)
         {
             timeDisplay.color = Color.red;
         }
@@ -67,13 +99,13 @@ public class GamemodeManager : MonoBehaviour
 
         timeDisplay.text = "Time Remaining: " + Mathf.Round((waveLength - timer));
         waveDisplay.text = "Current Wave: " + (currentWave + 1);
-        if(currentGameMode == GameMode.Adapt)
+        if (currentGameMode == GameMode.Adapt)
         {
             modeDisplay.text = "Adapt!";
         }
-        else if(currentGameMode == GameMode.PerspectiveShift)
+        else if (currentGameMode == GameMode.PerspectiveShift)
         {
             modeDisplay.text = "Perspective Shift!";
-        }
+        }*/
     }
 }

@@ -4,13 +4,33 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
-{ 
+{
+
+    UIManager uiManager;
+
+    public AudioSource SourceHerePls;
+    public AudioClip BoxHit;
+    public AudioClip GameOver;
+
     public bool gameOver = false; // Called in PlayerCubes.cs
     bool resetTime = false;
-    public GameObject GameOver;
+    int Health = 3;
     void Start()
     {
-        
+        GameObject gameManager = GameObject.FindGameObjectWithTag("GameController");
+        uiManager = gameManager.GetComponent<UIManager>();
+    }
+
+    void SboxHit()
+    {
+        SourceHerePls.clip = BoxHit;
+        SourceHerePls.Play();
+    }
+
+    void SgameOver()
+    {
+        SourceHerePls.clip = GameOver;
+        SourceHerePls.Play();
     }
 
     // Update is called once per frame
@@ -18,11 +38,13 @@ public class PlayerManager : MonoBehaviour
     {
         if (gameOver) //RESTART THE GAME
         {
+            
             if (!resetTime)
             {
+                //Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
                 Time.timeScale = 0.2f;
                 Invoke("ResetTime", 0.5f);
-                Invoke("GameOverScreen", 5.0f);
+                Invoke("SgameOver", 0.75f);
                 resetTime = true;
             }
             
@@ -34,8 +56,35 @@ public class PlayerManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
     }
-    void GameOverScreen()
+
+
+    public void Damaged()
     {
-        GameOver.SetActive(true);
+        if (Health > 0)
+        {
+            Health = Health - 1;
+            SboxHit();   
+            if (Health == 2)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[0];
+            }
+           
+            if (Health == 1)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[1];
+            }
+
+            if (Health == 0)
+            {
+                uiManager.lifeImage.sprite = uiManager.lifeSprites[2];
+            }
+
+        }
+        else if (Health == 0)
+        {
+            gameOver = true;
+        }
+        Debug.Log("Health = " + Health);
     }
+ 
 }

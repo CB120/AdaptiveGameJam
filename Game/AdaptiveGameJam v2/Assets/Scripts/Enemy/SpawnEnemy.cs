@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -8,19 +9,60 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject Wall;
     public GameObject ParentWall;
     public GameObject WallOutline;
+    public GameObject AlternateCamPos;
     public PlayerManager PMScript;
+
+    private float camMoveSpeed = 5.0f;
+
+    public bool alternateGameMode = false;
+    [SerializeField]
+    List<GameObject> CameraLocations;
+    SpawnGrid spawnGrid;
+
+    public Camera MainCam;
 
     void Start()
     {
+        spawnGrid = FindObjectOfType<SpawnGrid>();
         PMScript = FindObjectOfType<PlayerManager>();
         if (!PMScript.gameOver)
-            InvokeRepeating("DoWalls", 0.0f, 3.0f);
+            InvokeRepeating("DoWalls", 1.0f, 3.0f);
     }
+
+    bool phaseChange = false;
 
     private void Update()
     {
         if (PMScript.gameOver)
+        {
             CancelInvoke("DoWalls");
+            CancelInvoke("CamSwapper");
+            CancelInvoke("InitWalls");
+            MainCam.transform.position = new Vector3(0, 3, -10);
+            MainCam.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (alternateGameMode && !PMScript.gameOver)
+        {
+            CancelInvoke("DoWalls");
+            InvokeRepeating("CamSwapper", 0, 6.0f);
+            if (!phaseChange)
+            {
+                phaseChange = true;
+                Phase2Walls();
+            }
+        }
+        else if(!alternateGameMode && !PMScript.gameOver)
+        {
+            if (phaseChange)
+            {
+                CancelInvoke("CamSwapper");
+                CancelInvoke("InitWalls");
+                InvokeRepeating("DoWalls", 1.0f, 3.0f);
+                MainCam.transform.position = new Vector3(0, 3, -10);
+                MainCam.transform.rotation = Quaternion.Euler(0, 0, 0);
+                phaseChange = false;
+            }
+        }
     }
 
     void DoWalls()
@@ -30,10 +72,24 @@ public class SpawnEnemy : MonoBehaviour
         CreateRandomWall();
     }
 
+    void Phase2Walls()
+    {
+        InvokeRepeating("InitWalls", 1.0f, 4.5f);
+    }
+
+    void CamSwapper()
+    {
+       
+        Vector3 lerpCam = CameraLocations[0].transform.position;
+        MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, lerpCam, camMoveSpeed * Time.deltaTime);
+        MainCam.transform.rotation = Quaternion.Euler(25, 180, 0);
+    }
+
     void InitWalls()
     {
         EnemyWall = new List<GameObject>();
-        
+        CameraLocations = new List<GameObject>();
+
         for (int x = -1, y = 1, z = 1, i = 0; i < 9; i++)
         {
             if (x == -1 && i < 3)
@@ -71,6 +127,8 @@ public class SpawnEnemy : MonoBehaviour
             }
         }
         Instantiate(WallOutline, new Vector3(0, 0, 41), Quaternion.identity);
+        GameObject CamPos = Instantiate(AlternateCamPos, new Vector3(0, 10, 50), Quaternion.identity);
+        CameraLocations.Add(CamPos);
     }
 
     void CreateConnector()
