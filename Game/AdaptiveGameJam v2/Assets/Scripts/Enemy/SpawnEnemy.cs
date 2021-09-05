@@ -21,10 +21,13 @@ public class SpawnEnemy : MonoBehaviour
 
     public Camera MainCam;
 
+    Phase2Enemies NewEnemies;
     void Start()
     {
         spawnGrid = FindObjectOfType<SpawnGrid>();
         PMScript = FindObjectOfType<PlayerManager>();
+        NewEnemies = FindObjectOfType<Phase2Enemies>();
+
         if (!PMScript.gameOver)
             InvokeRepeating("DoWalls", 1.0f, 3.0f);
     }
@@ -49,6 +52,14 @@ public class SpawnEnemy : MonoBehaviour
             {
                 phaseChange = true;
                 Phase2Walls();
+                for (int i = 0; i < spawnGrid.Cubes.Length; i++)
+                {
+                    if (spawnGrid.Cubes[i])
+                    {
+                        if (spawnGrid.Cubes[i].activeInHierarchy)
+                            Destroy(spawnGrid.Cubes[i]);
+                    }
+                }
             }
         }
         else if(!alternateGameMode && !PMScript.gameOver)
@@ -176,4 +187,6 @@ public class SpawnEnemy : MonoBehaviour
             }
         }
     }
+
+
 }

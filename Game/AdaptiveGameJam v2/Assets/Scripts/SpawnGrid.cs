@@ -6,7 +6,7 @@ public class SpawnGrid : MonoBehaviour
 {
 
     public GameObject cube;
-    GameObject[] Cubes;
+    public GameObject[] Cubes;
     public Button[] Buttons = new Button[9];
     private GameObject GridParent;
     public int playerCollisions = 0;
@@ -157,8 +157,6 @@ public class SpawnGrid : MonoBehaviour
         //If we are currently in the Adapt gamemode
         if (gamemodeManager.currentGameMode == GamemodeManager.GameMode.Adapt)
         {
-            
-
             if (!Cubes[0])
             {
                 Cubes[indexPosition] = Instantiate(cube, new Vector3(-1, 3, 0), Quaternion.identity);
