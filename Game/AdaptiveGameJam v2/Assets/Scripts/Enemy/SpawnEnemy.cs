@@ -22,8 +22,10 @@ public class SpawnEnemy : MonoBehaviour
     public Camera MainCam;
 
     Phase2Enemies NewEnemies;
+    GamemodeManager GM;
     void Start()
     {
+        GM = FindObjectOfType<GamemodeManager>();
         spawnGrid = FindObjectOfType<SpawnGrid>();
         PMScript = FindObjectOfType<PlayerManager>();
         NewEnemies = FindObjectOfType<Phase2Enemies>();
@@ -85,7 +87,8 @@ public class SpawnEnemy : MonoBehaviour
 
     void Phase2Walls()
     {
-        InvokeRepeating("InitWalls", 1.0f, 4.5f);
+        float invokeTime = GM.waveNumber / 20;
+        InvokeRepeating("InitWalls", 1.0f, 4.5f - invokeTime);
     }
 
     void CamSwapper()
