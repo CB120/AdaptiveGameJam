@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 1720169986780173026, guid: d5a4db6b59d5c2541b36948b77720166, type: 3}
+  Cubes: []
   Buttons:
   - {fileID: 166503038}
   - {fileID: 1827759958}
@@ -601,8 +602,15 @@ MonoBehaviour:
   - {fileID: 1939485540}
   - {fileID: 1352817852}
   - {fileID: 1377380945}
-  gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
   playerCollisions: 0
+  gridMaterial: {fileID: 2100000, guid: 03d101fb9bdfc3048bf916fbc5d12dd7, type: 2}
+  transparentGridMaterial: {fileID: 0}
+  enemyMaterial: {fileID: 0}
+  transparentEnemyMaterial: {fileID: 0}
+  audiosource: {fileID: 0}
+  gridClick: {fileID: 0}
+  UnclickGrid: {fileID: 0}
+  EnemySpawnerScript: {fileID: 0}
   gamemodeManager: {fileID: 0}
 --- !u!4 &375678888
 Transform:
@@ -630,6 +638,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a349c89317d01a248a02a0b8df6438f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audiosource: {fileID: 0}
+  PassCube: {fileID: 0}
   scoreText: {fileID: 61564496}
 --- !u!114 &375678890
 MonoBehaviour:
@@ -645,9 +655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameMode: 0
   waveLength: 10
-  timeDisplay: {fileID: 1690761975}
-  waveDisplay: {fileID: 1746944654}
-  modeDisplay: {fileID: 452711492}
+  waveNumber: 0
 --- !u!114 &375678891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced5549a781cd6c42bc1c113a4179c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SourceHerePls: {fileID: 0}
+  BoxHit: {fileID: 0}
+  GameOver: {fileID: 0}
+  ResetHighScore: 0
   gameOver: 0
+  GameOverScreen: {fileID: 0}
 --- !u!1 &435548500
 GameObject:
   m_ObjectHideFlags: 0

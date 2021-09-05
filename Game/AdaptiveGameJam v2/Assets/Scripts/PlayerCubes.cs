@@ -44,7 +44,7 @@ public class PlayerCubes : MonoBehaviour
         {
             //StartCoroutine(cameraShake.Shake(.10f, .4f));
             //playerManager.gameOver = true;
-            print("HIT ENEMY");
+            
             Destroy(gameObject);
             playerManager.Damaged();
             //print("died");
