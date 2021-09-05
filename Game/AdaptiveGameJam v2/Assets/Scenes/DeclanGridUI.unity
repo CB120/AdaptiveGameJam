@@ -290,7 +290,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 565484993}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -1303,6 +1304,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &565484993 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1937438549152980313, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+  m_PrefabInstance: {fileID: 1937438547871947046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &684002830
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,17 +3785,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 19952732}
     m_Modifications:
+    - target: {fileID: 1937438547752370236, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1937438548063429520, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
       propertyPath: spawnGrid
       value: 
       objectReference: {fileID: 468093987}
+    - target: {fileID: 1937438549152980313, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980313, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_OcclusionCulling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980313, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980313, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980315, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_CameraType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980315, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980315, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_RequiresDepthTextureOption
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937438549152980315, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
+      propertyPath: m_RequiresOpaqueTextureOption
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1937438549152980317, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
       propertyPath: m_Name
       value: GridUICamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 1937438549152980317, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1937438549152980390, guid: 5aea88a5559835c4fb155e3e951e012c, type: 3}
       propertyPath: m_RootOrder

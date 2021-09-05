@@ -234,10 +234,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1937438549152980390}
   - component: {fileID: 1937438549152980313}
-  - component: {fileID: 1937438549152980312}
   - component: {fileID: 1937438549152980315}
   - component: {fileID: 1937438549152980314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GridUICamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -251,7 +250,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937438549152980317}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -268,7 +267,7 @@ Camera:
   m_GameObject: {fileID: 1937438549152980317}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -287,7 +286,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 256
@@ -302,14 +301,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1937438549152980312
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937438549152980317}
-  m_Enabled: 1
 --- !u!114 &1937438549152980315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +316,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
