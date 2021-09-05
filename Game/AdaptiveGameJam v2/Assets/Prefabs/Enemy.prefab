@@ -4941,6 +4941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transparentMaterial: {fileID: 2100000, guid: 7415eb19264e91543b6ffdf0d2884de3, type: 2}
+  missedMaterial: {fileID: 2100000, guid: 0c1fcc357f42ba2428a9fda62abfb99a, type: 2}
 --- !u!54 &6260244924275385873
 Rigidbody:
   m_ObjectHideFlags: 0

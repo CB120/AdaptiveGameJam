@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyCubes : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class EnemyCubes : MonoBehaviour
     ScoreManager scoreManager;
     PlayerManager playerManager;
     bool hasHit = false, particlesPlayed = false;
+    bool didMiss = false;
 
-    public Material transparentMaterial;
+    public Material transparentMaterial, missedMaterial;
 
     GamemodeManager gamemodeManager;
     //private float duration = 300f;
@@ -30,7 +32,11 @@ public class EnemyCubes : MonoBehaviour
     {
         if (transform.position.z < 0 && hasHit == false && gameObject.tag == "Vacant")
         {
-           // print("Missed"); 
+            // print("Missed");
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            didMiss = true;
+            //gameObject.GetComponent<Image>().SetTransparency(0.4f);
+            //gameObject.GetComponent<MeshRenderer>().material = missedMaterial;
             scoreManager.DecreaseScore(20);
 
             hasHit = true;// End of script chris put your health stuff before here
@@ -45,7 +51,15 @@ public class EnemyCubes : MonoBehaviour
 
         if (transform.position.z < 0)
         {
-           gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+            if (didMiss)
+            {
+                gameObject.GetComponent<MeshRenderer>().material = missedMaterial;
+            }
+            else
+            {
+                gameObject.GetComponent<MeshRenderer>().material = transparentMaterial;
+            }
+          
         }
        
 
